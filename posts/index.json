@@ -1,0 +1,12 @@
+[
+    {
+        "filename": "post1.md",
+        "title": "My First Blog Post",
+        "date": "2024-03-27"
+    },
+    {
+        "filename": "post2.md",
+        "title": "My Second Blog Post",
+        "date": "2024-03-28"
+    }
+]
