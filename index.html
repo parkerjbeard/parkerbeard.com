@@ -3,26 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Technical Blog</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Parker Beard</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <header>
-        <h1>PJBlog</h1>
-        <nav>
-            <ul>
-                <li><a href="#" class="active">Home</a></li>
-                <li><a href="#about">About</a></li>
+    <!-- Dark Mode Toggle -->
+    <button class="theme-toggle" aria-label="Toggle dark mode">
+        <div class="slider">
+            <div class="slider-track"></div>
+            <div class="slider-thumb"></div>
+        </div>
+    </button>
+
+    <div class="content-wrapper">
+        <main>
+            <h1>Parker Beard</h1>
+
+            <p class="bio">[Brief introduction describing current role and company]</p>
+
+            <p class="bio">[Previous experience and key achievements]</p>
+
+            <p class="bio">[Education, expertise and research interests]</p>
+
+            <h2>Essays</h2>
+            <ul class="content-list">
+                <li><a href="/content/processed/example.html">[Essay title 1]</a></li>
+                <li><a href="/content/processed/example.html">[Essay title 2]</a></li>
+                <li><a href="/content/processed/example.html">[Essay title 3]</a></li>
             </ul>
-        </nav>
-    </header>
 
-    <main id="content">
-        <!-- Blog posts will be dynamically injected here -->
-    </main>
+            <!-- <h2>Research</h2>
+            <ul class="content-list">
+            </ul>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="script.js"></script>
+            <h2>Interviews</h2>
+            <ul class="content-list">
+            </ul> -->
+        </main>
+    </div>
+    <script src="/js/darkmode.js"></script>
 </body>
 </html>
