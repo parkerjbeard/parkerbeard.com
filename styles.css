@@ -1,0 +1,381 @@
+/* CSS Reset and Base Styles */
+:root {
+  /* Core colors */
+  --bg-color: #FFFFFF;
+  --text-color: #141413;
+  
+  /* Derived colors */
+  --link-color: currentColor;
+  --link-hover-color: rgba(20, 20, 19, 0.7);
+  --border-color: rgba(20, 20, 19, 0.1);
+  
+  /* Transitions */
+  --theme-transition: background-color 0.3s ease, color 0.3s ease;
+
+  --nav-height: 64px;
+  --toc-width: 240px;
+  --content-width: 650px;
+}
+
+/* Dark mode variables */
+:root.dark-mode {
+  --bg-color: #141413;
+  --text-color: #f0efea;
+  --link-hover-color: rgba(240, 239, 234, 0.7);
+}
+
+/* Global Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Base Typography */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.7;
+  color: var(--text-color);
+  background: var(--bg-color);
+  margin: 0;
+  padding: 0;
+  max-width: none;
+  transition: var(--theme-transition);
+}
+
+/* Layout */
+.content-wrapper {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) min(65ch, 100%) minmax(0, 1fr);
+  gap: 2rem;
+  padding-top: 4rem;
+}
+
+.content-wrapper > * {
+  grid-column: 2;
+}
+
+/* Typography */
+h1 {
+  font-size: 3.5rem;
+  margin-bottom: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-top: 4rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  max-width: 70ch;
+}
+
+/* Links */
+a {
+  color: var(--link-color);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  color: var(--link-hover-color);
+}
+
+/* Lists */
+.content-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.content-list li {
+  margin-bottom: 1.25rem;
+}
+
+/* Dark Mode Toggle */
+.theme-toggle {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: 48px;
+  height: 24px;
+  z-index: 1000;
+}
+
+.slider {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slider-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 34px;
+  background-color: #e0e0e0;
+  transition: background-color 0.3s ease;
+}
+
+.slider-thumb {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  top: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Dark mode active states */
+.dark-mode .slider-track {
+  background-color: #404040;
+}
+
+.dark-mode .slider-thumb {
+  transform: translateX(24px);
+  background-color: #ffffff;
+}
+
+/* Remove the old SVG styles if they exist */
+.theme-toggle-icon {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body {
+    padding: 2rem;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  p {
+    font-size: 1.125rem;
+  }
+  
+  .theme-toggle {
+    top: 1rem;
+    right: 1rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .theme-toggle,
+  .toc,
+  .subscribe-form {
+    display: none;
+  }
+  
+  body {
+    color: black;
+    background: white;
+  }
+  
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  @page {
+    margin: 2cm;
+  }
+}
+
+/* Table of Contents */
+.toc {
+  position: fixed;
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 200px;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+}
+
+.toc-link {
+  display: block;
+  padding: 0.25rem 0;
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.toc-link:hover,
+.toc-link.active {
+  opacity: 1;
+}
+
+.toc-link[data-level="h3"] {
+  padding-left: 1rem;
+  font-size: 0.8125rem;
+}
+
+/* Article Styles */
+article {
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 4rem 0;
+}
+
+article header {
+  margin-bottom: 4rem;
+}
+
+article h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.article-meta {
+  font-size: 0.875rem;
+  opacity: 0.7;
+}
+
+/* Responsive Layout */
+@media (max-width: 1200px) {
+  .toc {
+    display: none;
+  }
+  
+  article {
+    padding: 2rem 0;
+  }
+}
+
+/* Add these new styles */
+
+/* Site Navigation */
+.site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--nav-height);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    background: var(--bg-color);
+    z-index: 100;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-back {
+    font-size: 32px;
+    text-decoration: none;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Page Layout */
+.page-layout {
+    display: flex;
+    padding-top: var(--nav-height);
+    min-height: 100vh;
+}
+
+/* Table of Contents */
+.toc {
+    position: sticky;
+    top: var(--nav-height);
+    width: var(--toc-width);
+    height: calc(100vh - var(--nav-height));
+    padding: 40px 24px;
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+.toc-title {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    color: var(--text-color);
+}
+
+.toc a {
+    display: block;
+    padding: 6px 0;
+    color: var(--text-color);
+    opacity: 0.7;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* Main Content */
+.main-content {
+    flex-grow: 1;
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 40px 24px;
+}
+
+article h1 {
+    font-size: 48px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+}
+
+.article-subtitle {
+    font-size: 20px;
+    opacity: 0.7;
+    margin-bottom: 16px;
+}
+
+.article-meta {
+    font-size: 14px;
+    opacity: 0.5;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .toc {
+        display: none;
+    }
+    
+    .main-content {
+        padding: 24px 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    article h1 {
+        font-size: 32px;
+    }
+    
+    .article-subtitle {
+        font-size: 18px;
+    }
+}
