@@ -127,7 +127,7 @@ var commonTypos = {
   
         var formData = new FormData(form);
         var url =
-          "https://docs.google.com/forms/d/e/1FAIpQLSfG3qq6S5Y1CK5G9Vv-MVoVlpSrXb5nhZWedazSMgi3oNz-Pg/formResponse";
+          "https://docs.google.com/forms/d/e/1FAIpQLScQVt95jDlVAcgca1lN65mCK3BSj0Ffp8JmMbpMDNli2-VUuA/viewform?usp=sf_link";
   
         fetch(url, {
           method: "POST",
