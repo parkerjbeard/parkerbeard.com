@@ -48,9 +48,9 @@ function initDarkMode() {
 
   darkModeToggle.addEventListener("change", handleDarkModeToggle);
 
-  // Check localStorage, default to dark mode if not set
+  // Check localStorage and set initial state without animation
   const savedDarkMode = localStorage.getItem("darkMode");
-  setDarkMode(savedDarkMode === null ? true : savedDarkMode === "enabled", false);
+  setDarkMode(savedDarkMode === "enabled", false);
 
   // Remove the no-animate class after a short delay
   setTimeout(() => {
