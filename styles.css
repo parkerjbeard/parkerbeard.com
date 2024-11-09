@@ -7,7 +7,7 @@
   font-style: normal;
   font-weight: 200 800;
   font-display: block;
-  src: url("fonts/Newsreader.woff2") format("woff2");
+  src: url("/fonts/Newsreader.woff2") format("woff2");
 }
 
 @font-face {
@@ -15,29 +15,30 @@
   font-style: italic;
   font-weight: 200 800;
   font-display: block;
-  src: url("fonts/Newsreader-italic.woff2") format("woff2");
+  src: url("/fonts/Newsreader-italic.woff2") format("woff2");
 }
 
 :root {
-  --bg-color: #141413;
-  --text-color: #f0efea;
-  --border-color: #444;
-  --footnote-bg-color: rgba(255, 255, 255, 0.15);
-  --footnote-hover-bg-color: rgba(255, 255, 255, 0.4);
-  --tooltip-bg-color: #2a2a2a;
-  --tooltip-text-color: #f0f0f0;
-  --tooltip-shadow-color: rgba(255, 255, 255, 0.15);
-  --toc-header-color: #f0efea;
-  --subscribe-form-bg: transparent;
-  --subscribe-form-text: #f0efea;
-  --subscribe-button-bg: #f0efea;
-  --subscribe-button-text: #141413;
-  --invert-percentage: 100%;
-  --toc-bg-color: rgba(20, 20, 19, 0.8);
+  --bg-color: #f0efea;
+  --text-color: #141413;
+  --border-color: #e6e4dd;
+  --footnote-bg-color: rgba(0, 0, 0, 0.08);
+  --footnote-hover-bg-color: rgba(0, 0, 0, 0.15);
+  --tooltip-bg-color: #f9f9f9;
+  --tooltip-text-color: #333;
+  --tooltip-shadow-color: rgba(0, 0, 0, 0.15);
+  --highlight-color: rgba(137, 137, 222, 0.3);
   --font-size-base: 20px;
   --content-max-width: 620px;
   --content-padding: 0 20px;
   --focus-color: #0066cc;
+  --toc-header-color: #141413;
+  --subscribe-form-bg: transparent;
+  --subscribe-form-text: #141413;
+  --subscribe-button-bg: #141413;
+  --subscribe-button-text: #f0efea;
+  --invert-percentage: 0%;
+  --toc-bg-color: rgba(240, 239, 234, 0.8);
 }
 
 body,
@@ -829,23 +830,4 @@ footer {
   font-weight: 400;
   font-style: italic;
   width: 100%;
-}
-
-/* Move light mode colors to this class */
-.light-mode {
-  --bg-color: #f0efea;
-  --text-color: #141413;
-  --border-color: #e6e4dd;
-  --footnote-bg-color: rgba(0, 0, 0, 0.08);
-  --footnote-hover-bg-color: rgba(0, 0, 0, 0.15);
-  --tooltip-bg-color: #f9f9f9;
-  --tooltip-text-color: #333;
-  --tooltip-shadow-color: rgba(0, 0, 0, 0.15);
-  --toc-header-color: #141413;
-  --subscribe-form-bg: transparent;
-  --subscribe-form-text: #141413;
-  --subscribe-button-bg: #141413;
-  --subscribe-button-text: #f0efea;
-  --invert-percentage: 0%;
-  --toc-bg-color: rgba(240, 239, 234, 0.8);
 }
