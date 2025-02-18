@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- Page Title -->
+    <title>The Censorship Paradox</title>
+
+    <!-- Open Graph Meta -->
+    <meta property="og:title" content="The Censorship Paradox"/>
+    <meta property="og:description" content="An essay on censorship and its unintended consequences"/>
+    <meta property="og:url" content="https://yourdomain.com/the-censorship-paradox"/>
+    <meta property="og:image" content="https://yourdomain.com/images/censorship-card.png"/>
+
+    <!-- Twitter Card Meta -->
+    <meta name="twitter:card" content="summary_large_image"/>
+
+    <!-- Author & Description -->
+    <meta name="author" content="Parker Beard"/>
+    <meta name="description" content="An essay on censorship and its unintended consequences"/>
+
+    <!-- Inline Style/Fonts -->
+    <style>
+        html {
+            visibility: hidden;
+        }
+
+        html.js-loaded {
+            visibility: visible;
+        }
+
+        header h1 a {
+            display: block;
+            width: 140px;
+            font-family: Newsreader;
+        }
+    </style>
+
+    <!-- Preloading fonts (optional) -->
+    <link rel="preload" href="fonts/Newsreader.woff2" as="font" type="font/woff2" crossorigin/>
+    <link rel="preload" href="fonts/Newsreader-italic.woff2" as="font" type="font/woff2" crossorigin/>
+
+    <!-- Main styles -->
+    <link rel="stylesheet" href="styles.css"/>
+
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+    <link rel="alternate icon" type="image/png" href="favicon-32x32.png"/>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+
+    <!-- Dark Mode Script -->
+    <script>
+        (function() {
+            try {
+                const root = document.documentElement;
+                const classes = ["preload"];
+
+                if (localStorage.getItem("darkMode") === "enabled") {
+                    classes.push("dark-mode");
+                    root.style.setProperty("--bg-color", "#141413");
+                    root.style.setProperty("--text-color", "#f0efea");
+                }
+
+                root.classList.add(...classes);
+
+                queueMicrotask(() => {
+                    root.classList.add("js-loaded");
+                });
+            } catch (e) {
+                document.documentElement.classList.add("preload", "js-loaded");
+            }
+        })();
+    </script>
+
+    <!-- Additional Scripts -->
+    <script src="darkmode.js" defer></script>
+    <script src="footnotes.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div>
+            <h1>
+                <a href="./">Parker Beard</a>
+            </h1>
+            <div class="header-controls">
+                <div class="toggle-switch">
+                    <input type="checkbox" id="darkModeToggle" class="toggle-input"/>
+                    <label for="darkModeToggle" class="toggle-label">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        <article class="content-container">
+            <h1>The Censorship Paradox</h1>
+            <h4>Censorship doesn't extinguish dissent. It inflames it.</h4>
+            <p class="author-date">
+                <!-- Update date/time as needed -->
+                <time datetime="2024-12-01">February 2025</time>
+            </p>
+
+            <p>
+                In the aftermath of the 2020 U.S. presidential election,
+                the institutions that controlled public discourse declared
+                that Donald Trump—and by extension, the tens of millions
+                that supported him—no longer had a place in the national
+                conversation.
+                His accounts were deleted and his words were erased.
+                He and his movement, they assumed, would wither in silence.
+                However, silencing people does not make them disappear.
+                By 2024, Trump’s return was not just about him—it was about
+                millions rejecting a system that silenced them instead of
+                answering them.
+                The more they were silenced, the more certain they became
+                that they were right.
+            </p>
+
+            <p>
+                This is the censorship paradox
+                <sup id="fnref:1">
+                    <a class="footnote-ref" href="#fn:1">1</a>
+                </sup>:
+                attempts to forcefully control speech and narratives do not
+                make ideas disappear.
+                They force them underground, beyond institutional reach,
+                where they grow in strength.
+                The Hunter Biden laptop story was a textbook case of censorship
+                amplifying controversy.
+                I had seen the leaked screenshots of emails, texts, and photos
+                on Twitter.
+                A few days later, when I went to look it up again, it was gone.
+                I searched online and the only remaining articles were about
+                how the story was “Russian disinformation.”
+                But I had <em>seen</em> it, and now they were telling me it never existed.
+                When censorship is so obvious, it forces people to question
+                everything they have been told.
+                <em>What else is a lie?
+                Is anything we're being told actually true?</em>
+                Nothing fuels conspiracy thinking faster than watching
+                the truth get memory-holed in real time.
+                The more they try to forcefully control the story,
+                the less control they actually have.
+                Censorship is control slipping through clenched fists.
+            </p>
+
+            <p>
+                There’s a moment, for those paying attention, when they realize
+                the people in charge aren’t just consistently wrong—
+                they’re lying.
+                It starts small: an account of a news event doesn’t add up,
+                a media narrative shifts overnight, and a law or rule is applied
+                differently to different people.
+                Initially, the assumption is that there’s been some mistake.
+                They must know something the people don’t.
+                But then the pattern repeats.
+                Questions are deflected, inconvenient facts disappear,
+                and those who demand answers are mocked instead of debated.
+                And then the moment of clarity:
+                they aren’t avoiding the truth.
+                They are suppressing it.
+                A system built on lies can only survive by force,
+                and the more force they use, the more fragile it becomes.
+            </p>
+
+            <p>
+                Censorship only works if the facade never cracks.
+                When it inevitably does, the censored are forced to reconsider
+                everything they were told was safe to believe.
+                A government that allows dissent can keep its authority.
+                A government that punishes it erodes its legitimacy,
+                pushing opposition into alternative structures of influence.
+            </p>
+
+            <p>
+                Defenders of censorship argue that some suppression
+                is necessary to prevent real harm—incitement to violence,
+                dangerous disinformation, and threats to national security.
+                In theory, suppressing these threats seems like a
+                necessary safeguard.
+                But in practice, the line between protecting the public
+                and controlling the narrative is impossibly thin.
+                Who decides what constitutes free speech?
+                Who ensures these decisions are fair?
+                The problem is trust.
+                A censored truth looks like a lie,
+                and a banned lie looks like the truth.
+                The only way to fight misinformation is to expose it
+                to scrutiny, not suppress it.
+                When people see dissent openly debated,
+                they are more likely to believe the actual evidence
+                rather than assume it’s being hidden from them.
+            </p>
+
+            <p>
+                Consider China’s Great Firewall, often cited as a “success”
+                in digital authoritarianism.
+                Maintaining this system requires massive technological
+                infrastructure, constant surveillance, and regular adaptation
+                to new circumvention methods.
+                Even then, information leaking through is inevitable.
+                As a result, a separation between official narratives
+                and underground knowledge is created.
+                Each small breach spreads, weakening the legitimacy
+                of the entire control structure.
+                The collapse of this system is inevitable.
+            </p>
+
+            <p>
+                COVID proved how censorship breeds distrust.
+                Governments, media, and tech companies worked together
+                for nearly two years to suppress debate.
+                Scientists who questioned lockdown policies were censored.
+                Vaccine skeptics were labeled dangerous.
+                Alternative theories about the origins of the virus
+                were dismissed as “racist.”
+                For a while, the suppression of the truth seemed effective
+                and the public accepted the official narrative.
+                However, reality does not stay buried.
+                The lab leak theory, once banned as misinformation,
+                became mainstream.
+                Vaccine side effects, also banned for being anti-science propaganda,
+                became accepted concerns.
+                One by one, the “conspiracy theories” proved true.
+                Millions of people began to realize not just that
+                the “experts” were wrong,
+                but that the establishment had made it impossible
+                to even discuss the possibility.
+            </p>
+
+            <p>
+                Censorship is not a tool for maintaining order.
+                It is an overconfident step down a slippery slope
+                that guarantees disorder.
+                Every time a government, a media organization, or a tech company
+                silences debate, they do not make people forget the issue.
+                They ensure that when the truth comes out,
+                it will not be discussed rationally—it will explode.
+                The greatest driver of opposition is not exposure to new ideas
+                but the suspicion that the official narrative
+                is built on lies.
+            </p>
+
+            <p>
+                I saw it for myself in Los Angeles during the BLM riots.
+                I watched businesses board up, streets wrecked,
+                and the aftermath of looting.
+                At the same time, I had seen firsthand how brutal
+                the COVID lockdowns were.
+                People had no problem shutting down small businesses
+                or kicking people off beaches for being outside.
+                I know this because I was one of these people—
+                I was surfing with a friend when police came
+                to force us out of the water for “violating lockdown orders.”
+                And yet, when mass protests erupted,
+                the same authorities who had banned outdoor exercise
+                not only allowed them but encouraged them.
+                The message was clear: some voices would be elevated,
+                others suppressed.
+                When governments selectively enforce rules
+                based on political alignment, they are engaging in a subtler,
+                yet equally dangerous, form of censorship.
+            </p>
+
+            <p>
+                Censorship is an admission of weakness.
+                It is the last, desperate tool of a system
+                that no longer trusts itself to win an argument.
+                Some regimes have maintained control through suppression
+                for decades, but even the most tightly controlled societies
+                live with an undercurrent of dissent.
+                The more an idea is forced underground,
+                the more powerful it becomes when it returns to the surface.
+                Every act of suppression creates parallel systems of truth
+                and power beyond institutional reach.
+                Every banned topic becomes a rallying point.
+                A system built on censorship is not a fortress
+                but a dam against an inevitable flood.
+                The censorship dam is permanently cracked.
+                The flood is coming.
+                The pressure only goes one way.
+            </p>
+
+            <section class="footnotes">
+                <h3>Footnotes</h3>
+                <ol class="footnotes-list">
+                    <li id="fn:1" class="footnote-item">
+                        <p>
+                            <sup>1</sup>
+                            Before I published this, I checked to see if anyone
+                            had coined the term “Censorship Paradox” before.
+                            I haven’t read this particular text, but alas I will
+                            give credit to my genius predecessor:
+                            <a href="https://www.cambridge.org/core/journals/pmla/article/abs/introduction-corrupt-originals-the-paradox-of-censorship/0A765EB9CE55FFE401398A2292119F17"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                https://www.cambridge.org/core/journals/pmla/article/abs/introduction-corrupt-originals-the-paradox-of-censorship/0A765EB9CE55FFE401398A2292119F17
+                            </a>
+                            <a href="#fnref:1" class="footnote-backref">↩</a>
+                        </p>
+                    </li>
+                </ol>
+            </section>
+        </article>
+    </main>
+</body>
+</html>
