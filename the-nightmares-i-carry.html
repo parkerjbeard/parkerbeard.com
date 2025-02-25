@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- Page Title -->
+    <title>The Nightmares I Carry</title>
+
+    <!-- Open Graph Meta -->
+    <meta property="og:title" content="The Nightmares I Carry"/>
+    <meta property="og:description" content="An essay on the price of inaction"/>
+    <meta property="og:url" content="https://yourdomain.com/the-nightmares-i-carry"/>
+    <meta property="og:image" content="https://yourdomain.com/images/nightmares-card.png"/>
+
+    <!-- Twitter Card Meta -->
+    <meta name="twitter:card" content="summary_large_image"/>
+
+    <!-- Author & Description -->
+    <meta name="author" content="Parker Beard"/>
+    <meta name="description" content="The price of inaction"/>
+
+    <!-- Inline Style/Fonts -->
+    <style>
+        html {
+            visibility: hidden;
+        }
+
+        html.js-loaded {
+            visibility: visible;
+        }
+
+        header h1 a {
+            display: block;
+            width: 140px;
+            font-family: Newsreader;
+        }
+
+        /* Add bottom spacing to the content */
+        .content-wrapper {
+            padding-bottom: 6rem;
+        }
+
+        /* Ensure the last paragraph has margin too */
+        .content-container p:last-child {
+            margin-bottom: 6rem;
+        }
+    </style>
+
+    <!-- Preloading fonts (optional) -->
+    <link rel="preload" href="fonts/Newsreader.woff2" as="font" type="font/woff2" crossorigin/>
+    <link rel="preload" href="fonts/Newsreader-italic.woff2" as="font" type="font/woff2" crossorigin/>
+
+    <!-- Main styles -->
+    <link rel="stylesheet" href="styles.css"/>
+
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+    <link rel="alternate icon" type="image/png" href="favicon-32x32.png"/>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+
+    <!-- Dark Mode Script -->
+    <script>
+        (function() {
+            try {
+                const root = document.documentElement;
+                const classes = ["preload"];
+
+                if (localStorage.getItem("darkMode") === "enabled") {
+                    classes.push("dark-mode");
+                    root.style.setProperty("--bg-color", "#141413");
+                    root.style.setProperty("--text-color", "#f0efea");
+                }
+
+                root.classList.add(...classes);
+
+                queueMicrotask(() => {
+                    root.classList.add("js-loaded");
+                });
+            } catch (e) {
+                document.documentElement.classList.add("preload", "js-loaded");
+            }
+        })();
+    </script>
+
+    <!-- Additional Scripts -->
+    <script src="darkmode.js" defer></script>
+    <script src="footnotes.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div>
+            <h1>
+                <a href="./">Parker Beard</a>
+            </h1>
+            <div class="header-controls">
+                <div class="toggle-switch">
+                    <input type="checkbox" id="darkModeToggle" class="toggle-input"/>
+                    <label for="darkModeToggle" class="toggle-label">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        <article class="content-container">
+            <h1>The Nightmares I Carry</h1>
+            <h4>The Price of Inaction</h4>
+            <p class="author-date">
+                <!-- Update date/time as needed -->
+                <time datetime="2025-02-24">24 February 2025</time>
+            </p>
+
+            <p>
+                In the last two years, I have had a single good dream. I don't remember the dream itself, 
+                only that I woke up without the familiar weight of something unfinished. It slipped away too quickly, 
+                leaving only the sense that, for a moment, my mind had shown me something whole—something I was not meant to keep.
+            </p>
+            <p>
+                The others return night after night, but not in the way nightmares are expected to. There are no grotesque monsters, 
+                no embarrassing moments, and no teeth falling out. They are slower and heavier. Instead of a sudden terror, 
+                they are a weight that lingers long after morning comes.
+            </p>
+            <p>
+                Each dream follows the same script. I watch as something terrible unfolds, usually to someone I love, 
+                inflicted by someone or something I do not recognize. I am there, watching, but unable to prevent it. 
+                The details shift from night to night, but the core remains the same: I see what is coming, I know what needs to be done, 
+                and still, I fail. I either do not act, act too late, or my actions aren't enough against the evil that dominates my sleep. 
+                My nightmares do not make me the victim or the villain. They assign me a singular role—the one who was supposed to stop it, 
+                the one who didn't.
+            </p>
+            <p>
+                That is what disturbs me—not the violence itself, but my inability within it. I can accept loss. I can accept pain. 
+                What I cannot accept is knowing, after the fact, that I could have prevented it and failed. 
+                That something will happen to the people I love, and the answer will come just a moment too late. 
+                The things that matter most to me are fragile, not in theory but in reality. That fragility is mine to protect.
+            </p>
+            <p>
+                I am an optimist, but not in the passive sense. The world does not correct itself, nor does it move in the right direction on its own. 
+                The future must be built, shaped, and fought for. Belief is not enough. Hope is not enough. Even a strong vision is not enough. 
+                I do not trust the future we deserve in the hands of others. The only way to guarantee the future I want is to build it myself.
+            </p>
+            <p>
+                I believe God has a plan, but He does not move the pieces alone. Perhaps the highest task we face is to discern and align ourselves with that calling. 
+                Destiny is fixed, but the path to it is built by human hands. The future will come regardless, but what happens in the space between is 
+                not guaranteed. Every delay and every failure is a debt that must be paid. To know the will of God and shrink from it—to see the path and turn away—is 
+                the only failure I fear.
+            </p>
+            <p>
+                My deepest respect goes to those who see a better future and work relentlessly to make it real. They refuse to accept the world as it is and instead, 
+                labor to create the world as it should be. Even if I don't agree with their vision or their execution, I respect that they did something <i>real</i>. 
+                Vision without action is merely a daydream.
+            </p>
+            <p>
+                My dreams do not give me answers, only consequences. They do not comfort me, only remind me what is at stake. Harsh as it is, I value this reminder. 
+                The cost of inaction is <i>everything</i>. Nothing takes precedence over preventing the suffering of those that I love. These dreams both emerge from and 
+                reinforce the urgency I already feel. If peaceful sleep has not yet come, perhaps it must be earned.
+            </p>
+            <p>
+                Maybe one day I'll have good dreams, but I won’t wait for them. If peace must be earned, then I will spend my life paying the price. 
+            </p>
+        </article>
+    </main>
+</body>
+</html>
