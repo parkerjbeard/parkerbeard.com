@@ -166,11 +166,22 @@
     </script>
     <script>
         // Age Counter
-        let isHovered = false;  // Track hover state
+        let isHovered = false;  // Track hover/toggle state
+        let isTouched = false;  // Track if it was touched (for mobile)
 
         function updateAge() {
-            const birthDate = new Date('2002-07-27T13:40:00');
+            // Create birth date with explicit year, month, day, hour, minute in PST
+            // Note: Months are 0-indexed in JavaScript Date (0 = January, 6 = July)
+            const birthYear = 2002;
+            const birthMonth = 6;  // July (0-indexed)
+            const birthDay = 27;
+            const birthHour = 13;  // 1:40 PM = 13:40 in 24-hour format
+            const birthMinute = 40;
+            
+            // Create birth date in PST (UTC-7 for July due to daylight saving time)
+            const birthDate = new Date(Date.UTC(birthYear, birthMonth, birthDay, birthHour + 7, birthMinute));
             const now = new Date();
+            
             const diff = now - birthDate;
             
             // Calculate all time units
@@ -191,19 +202,29 @@
             ageCounter.dataset.detailed = `${yearsInt} years, ${daysInt} days, ${hoursInt} hours, ${minutesInt} minutes, and ${secondsInt} seconds old`;
             ageCounter.dataset.decimal = `${years.toFixed(10)}`;
             
-            // Show the appropriate format based on hover state
-            ageCounter.textContent = isHovered ? ageCounter.dataset.detailed : ageCounter.dataset.decimal;
+            // Show the appropriate format based on hover/toggle state
+            ageCounter.textContent = (isHovered || isTouched) ? ageCounter.dataset.detailed : ageCounter.dataset.decimal;
         }
 
-        // Set up hover events
+        // Set up hover and touch events
         const ageCounter = document.getElementById('age-counter');
+        
+        // Hover events for desktop
         ageCounter.addEventListener('mouseenter', function() {
             isHovered = true;
             this.textContent = this.dataset.detailed;
         });
         ageCounter.addEventListener('mouseleave', function() {
             isHovered = false;
-            this.textContent = this.dataset.decimal;
+            if (!isTouched) {
+                this.textContent = this.dataset.decimal;
+            }
+        });
+        
+        // Touch events for mobile
+        ageCounter.addEventListener('click', function() {
+            isTouched = !isTouched; // Toggle the touch state
+            this.textContent = isTouched ? this.dataset.detailed : this.dataset.decimal;
         });
 
         // Update frequently
