@@ -29,6 +29,18 @@
             width: 140px;
             font-family: Newsreader, serif;
         }
+
+        .age-counter {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            transform-origin: left center;
+            font-size: inherit;
+            font-family: inherit;
+            margin: 1em 0;
+        }
+        .age-counter:hover {
+            transform: scale(1.02);
+        }
     </style>
 
     <link rel="preload" href="fonts/Newsreader.woff2" as="font" type="font/woff2" crossorigin />
@@ -98,6 +110,7 @@
                 </p>
                 <p>Parker is currently studying philosophy at Pepperdine University.
                 </p>
+                <p id="age-counter" class="age-counter"></p>
             </section>
 
             <section>
@@ -150,6 +163,52 @@
             "%cThis is a template clone of Dario Amodei's website. You can find it on my Github: https://github.com/parkerjbeard/parkerjbeard.com",
             "font-family: monospace; font-size: 14px; color: #141413; background-color: #F0EFEA; padding: 5px; border-radius: 5px;",
         );
+    </script>
+    <script>
+        // Age Counter
+        let isHovered = false;  // Track hover state
+
+        function updateAge() {
+            const birthDate = new Date('2002-07-27T13:40:00');
+            const now = new Date();
+            const diff = now - birthDate;
+            
+            // Calculate all time units
+            const years = diff / (1000 * 60 * 60 * 24 * 365.25);
+            const yearsInt = Math.floor(years);
+            const remainingDays = (years - yearsInt) * 365.25;
+            const daysInt = Math.floor(remainingDays);
+            const remainingHours = (remainingDays - daysInt) * 24;
+            const hoursInt = Math.floor(remainingHours);
+            const remainingMinutes = (remainingHours - hoursInt) * 60;
+            const minutesInt = Math.floor(remainingMinutes);
+            const remainingSeconds = (remainingMinutes - minutesInt) * 60;
+            const secondsInt = Math.floor(remainingSeconds);
+
+            const ageCounter = document.getElementById('age-counter');
+            
+            // Store both formats
+            ageCounter.dataset.detailed = `${yearsInt} years, ${daysInt} days, ${hoursInt} hours, ${minutesInt} minutes, and ${secondsInt} seconds old`;
+            ageCounter.dataset.decimal = `${years.toFixed(10)}`;
+            
+            // Show the appropriate format based on hover state
+            ageCounter.textContent = isHovered ? ageCounter.dataset.detailed : ageCounter.dataset.decimal;
+        }
+
+        // Set up hover events
+        const ageCounter = document.getElementById('age-counter');
+        ageCounter.addEventListener('mouseenter', function() {
+            isHovered = true;
+            this.textContent = this.dataset.detailed;
+        });
+        ageCounter.addEventListener('mouseleave', function() {
+            isHovered = false;
+            this.textContent = this.dataset.decimal;
+        });
+
+        // Update frequently
+        updateAge();
+        setInterval(updateAge, 50);
     </script>
 </body>
 
