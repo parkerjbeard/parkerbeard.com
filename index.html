@@ -16,123 +16,258 @@
         content="Parker Beard is a software engineer and aspiring entrepreneur. He is passionate about technology, freedom, and the future of humanity." />
 
     <style>
+        :root {
+            --font-family: 'Newsreader', serif;
+            --bg-color: #f0efea;
+            --text-color: #141413;
+            --border-color: #e6e4dd;
+            --accent-color: #141413;
+            --transition-speed: 0.3s;
+            --content-max-width: 700px;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --font-size-base: 18px;
+            --shadow-soft: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode {
+            --bg-color: #141413;
+            --text-color: #f0efea;
+            --border-color: #333;
+            --accent-color: #f0efea;
+        }
+
         html {
             visibility: hidden;
+            font-size: var(--font-size-base);
         }
 
         html.js-loaded {
             visibility: visible;
         }
 
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+
+        .container {
+            max-width: var(--content-max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        header {
+            padding: var(--spacing-lg) 0 var(--spacing-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-weight: 500;
+            font-size: 1.5rem;
+        }
+
         header h1 a {
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 46px;
+            height: 24px;
+        }
+
+        .toggle-input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-label {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: transparent;
+            border: 1px solid var(--text-color);
+            border-radius: 24px;
+            transition: all var(--transition-speed);
+        }
+
+        .toggle-slider {
+            position: absolute;
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 2px;
+            background-color: var(--text-color);
+            border-radius: 50%;
+            transition: transform var(--transition-speed);
+        }
+
+        .toggle-input:checked + .toggle-label .toggle-slider {
+            transform: translateX(22px);
+        }
+
+        main {
+            padding: var(--spacing-lg) 0 var(--spacing-xl);
+        }
+
+        section {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .essays-section {
+            grid-row: 1;
+            grid-column: 1;
+        }
+
+        .sidebar {
+            grid-row: 1;
+            grid-column: 2;
+        }
+
+        .essays-list {
+            margin-top: var(--spacing-lg);
+        }
+
+        .essay-item {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .essay-title {
+            font-size: 1.15rem;
+            font-weight: 500;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .latest-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-color);
+            opacity: 0.7;
+            margin-left: var(--spacing-sm);
+        }
+
+        .essay-date {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: var(--spacing-sm);
             display: block;
-            width: 140px;
-            font-family: Newsreader, serif;
+        }
+
+        .essay-excerpt {
+            font-size: 0.95rem;
+            margin-top: var(--spacing-sm);
+            line-height: 1.5;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 0 0 var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .about-section {
+            font-size: 0.95rem;
+            margin-bottom: var(--spacing-xl);
         }
 
         .age-counter {
             cursor: pointer;
-            transition: all 0.3s ease;
-            transform-origin: left center;
-            font-size: inherit;
+            transition: all var(--transition-speed);
+            font-size: 0.95rem;
             font-family: inherit;
-            margin: 1em 0;
+            margin: var(--spacing-md) 0;
+            padding: var(--spacing-sm) 0;
+            display: inline-block;
         }
+
         .age-counter:hover {
             transform: scale(1.02);
         }
 
-        /* Newsletter styles commented out
-        .newsletter-section {
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border-color);
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: var(--spacing-lg) 0 var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .newsletter-form {
-            margin: 1rem 0;
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
         }
 
-        .newsletter-form form {
-            display: flex;
-            gap: 0.5rem;
-            max-width: 100%;
+        li {
+            margin-bottom: var(--spacing-md);
         }
 
-        .newsletter-form input {
-            flex: 1;
-            padding: 0.6rem;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            font-size: 0.9rem;
-            background-color: var(--bg-color);
+        a {
             color: var(--text-color);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1px;
+            transition: border-color var(--transition-speed);
         }
 
-        .newsletter-form button {
-            padding: 0.6rem 1rem;
-            background-color: var(--text-color);
-            color: var(--bg-color);
-            border: none;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: opacity 0.2s ease;
+        a:hover {
+            border-color: var(--text-color);
         }
 
-        .newsletter-form button:hover {
-            opacity: 0.9;
-        }
-
-        .form-message {
-            margin-top: 0.5rem;
-            font-size: 0.85rem;
-        }
-        */
-
-        .content-columns {
-            display: flex;
-            gap: 2rem;
-            margin-top: 1.5rem;
-            align-items: flex-start;
-        }
-        
-        .essays-section {
-            flex: 3;
-        }
-        
-        .links-section {
-            flex: 1;
-        }
-        
-        .essays-section h3,
-        .links-section h3 {
-            margin-top: 0;
-            margin-bottom: 0.75rem;
-        }
-        
-        .essays-section ul,
         .links-section ul {
-            margin-top: 0;
-        }
-        
-        @media (max-width: 768px) {
-            .content-columns {
-                flex-direction: column;
-                gap: 1rem;
-            }
+            font-size: 0.95rem;
         }
 
-        @media (max-width: 600px) {
-            .newsletter-form form {
-                flex-direction: column;
+        @media (max-width: 768px) {
+            .layout {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
+            }
+
+            .essays-section {
+                grid-row: 2;
+                grid-column: 1;
+            }
+
+            .sidebar {
+                grid-row: 1;
+                grid-column: 1;
+            }
+
+            .sidebar .about-section {
+                margin-bottom: var(--spacing-lg);
             }
         }
     </style>
 
     <link rel="preload" href="fonts/Newsreader.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/Newsreader-italic.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="styles.css" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 
@@ -140,321 +275,203 @@
         (function () {
             try {
                 const root = document.documentElement;
-                const classes = ["preload"];
-
+                
                 // Default to dark mode if not set in localStorage
                 if (localStorage.getItem("darkMode") === null) {
                     localStorage.setItem("darkMode", "enabled");
                 }
                 
                 if (localStorage.getItem("darkMode") === "enabled") {
-                    classes.push("dark-mode");
-                    root.style.setProperty("--bg-color", "#141413");
-                    root.style.setProperty("--text-color", "#f0efea");
+                    root.classList.add("dark-mode");
                 }
-                root.classList.add(...classes);
 
                 queueMicrotask(() => {
                     root.classList.add("js-loaded");
                 });
             } catch (e) {
-                document.documentElement.classList.add(
-                    "preload",
-                    "js-loaded",
-                );
+                document.documentElement.classList.add("js-loaded");
             }
         })();
     </script>
 
     <script src="https://cdn.usefathom.com/script.js" data-site="VDZFYXIJ" defer></script>
-    <script src="darkmode.js" defer></script>
-    <script src="footnotes.js" defer></script>
 </head>
 
 <body>
-    <header>
-        <div>
+    <div class="container">
+        <header>
             <h1>
                 <a href="#">Parker Beard</a>
             </h1>
-            <div class="header-controls">
-                <div class="toggle-switch">
-                    <input type="checkbox" id="darkModeToggle" class="toggle-input" />
-                    <label for="darkModeToggle" class="toggle-label">
-                        <span class="toggle-slider"></span>
-                    </label>
-                </div>
+            <div class="toggle-switch">
+                <input type="checkbox" id="darkModeToggle" class="toggle-input" />
+                <label for="darkModeToggle" class="toggle-label">
+                    <span class="toggle-slider"></span>
+                </label>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <main class="content-wrapper">
-        <article class="content-container">
-            <section>
-                <p>
-                    Parker Beard is a software engineer and aspiring entrepreneur. He is passionate about technology, freedom,
-                    and the future of humanity.
-                </p>
-                <p>Parker is currently studying philosophy at Pepperdine University.
-                </p>
-                <p id="age-counter" class="age-counter"></p>
-            </section>
-
-            <section class="latest-essay">
-                <h3>Latest Essay</h3>
-                <a href="the-last-warden.html">The Last Warden</a> (April 1, 2025)
-            </section>
-
-            <div class="content-columns">
+        <main>
+            <div class="layout">
                 <section class="essays-section">
-                    <h3>Essays</h3>
-                    <ul>
-                        <li>
-                            <a href="beyond-frontiers.html">Beyond Frontiers</a>
-                        </li>
-                        <li>
-                            <a href="against-the-university.html">Against the University</a>
-                        </li>
-                        <li>
-                            <a href="the-censorship-paradox.html">The Censorship Paradox</a>
-                        </li>
-                        <li>
-                            <a href="the-nightmares-i-carry.html">The Nightmares I Carry</a>
-                        </li>
-                        <li>
-                            <a href="before-the-cage.html">Before the Cage</a>
-                        </li>
-                    </ul>
+                    <h2>Essays</h2>
+                    <div class="essays-list">
+                        <div class="essay-item">
+                            <div class="essay-title">
+                                <a href="before-the-cage.html">Before the Cage</a>
+                                <span class="latest-tag">Latest</span>
+                            </div>
+                            <span class="essay-date">1 April 2025</span>
+                            <p class="essay-excerpt">Contemplating the moments of freedom that precede voluntary constraints.</p>
+                        </div>
+                        
+                        <div class="essay-item">
+                            <div class="essay-title">
+                                <a href="the-nightmares-i-carry.html">The Nightmares I Carry</a>
+                            </div>
+                            <span class="essay-date">24 February 2025</span>
+                            <p class="essay-excerpt">Personal reflections on the burden of foresight and the responsibility of knowledge.</p>
+                        </div>
+                        
+                        <div class="essay-item">
+                            <div class="essay-title">
+                                <a href="the-censorship-paradox.html">The Censorship Paradox</a>
+                            </div>
+                            <span class="essay-date">17 February 2025</span>
+                            <p class="essay-excerpt">How our attempts to control information may be undermining the very freedoms we aim to protect.</p>
+                        </div>
+                        
+                        <div class="essay-item">
+                            <div class="essay-title">
+                                <a href="against-the-university.html">Against the University</a>
+                            </div>
+                            <span class="essay-date">3 February 2025</span>
+                            <p class="essay-excerpt">A critical analysis of higher education's evolution and its divergence from original purpose.</p>
+                        </div>
+                        
+                        <div class="essay-item">
+                            <div class="essay-title">
+                                <a href="beyond-frontiers.html">Beyond Frontiers</a>
+                            </div>
+                            <span class="essay-date">9 November 2024</span>
+                            <p class="essay-excerpt">Examining the next chapter of human exploration and its profound implications for our species.</p>
+                        </div>
+                    </div>
                 </section>
 
-                <section class="links-section">
-                    <h3>Links</h3>
-                    <ul>
-                        <!-- <li>
-                            <a href="https://x.com/parkerjbeard" target="_blank" rel="noopener noreferrer">X/Twitter</a>
-                        </li> -->
-                        <li>
-                            <a href="https://github.com/parkerjbeard" target="_blank" rel="noopener noreferrer">Github</a>
-                        </li>
-                    </ul>
-                </section>
-            </div>
+                <div class="sidebar">
+                    <section class="about-section">
+                        <h3>About</h3>
+                        <p>
+                            Parker Beard writes essays against the illusions of the modern world, exploring what it means to live courageously, build meaningfully, and reclaim humanity's highest purpose.
+                        </p>
+                        <p>He is currently studying philosophy at Pepperdine University.</p>
+                        <p id="age-counter" class="age-counter"></p>
+                    </section>
 
-            <!-- Newsletter section commented out
-            <section class="newsletter-section">
-                <p>Get notified when I publish new essays:</p>
-                <div class="newsletter-form">
-                    <form id="subscribe-form" action="javascript:void(0);">
-                        <input type="email" id="subscribe-email" placeholder="Your email address" required>
-                        <button type="submit">Subscribe</button>
-                    </form>
-                    <p id="formMessage" class="form-message"></p>
+                    <section class="links-section">
+                        <h3>Links</h3>
+                        <ul>
+                            <li>
+                                <a href="https://github.com/parkerjbeard" target="_blank" rel="noopener noreferrer">Github</a>
+                            </li>
+                        </ul>
+                    </section>
                 </div>
-            </section>
-            -->
-
-        </article>
-    </main>
+            </div>
+        </main>
+    </div>
 
     <script>
-        console.log(
-            "%cThis is a template clone of Dario Amodei's website. You can find it on my Github: https://github.com/parkerjbeard/parkerjbeard.com",
-            "font-family: monospace; font-size: 14px; color: #141413; background-color: #F0EFEA; padding: 5px; border-radius: 5px;",
-        );
-    </script>
-    <script>
+        // Dark mode toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggle = document.getElementById('darkModeToggle');
+            const html = document.documentElement;
+            
+            // Set initial state based on localStorage
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                toggle.checked = true;
+                html.classList.add('dark-mode');
+            }
+            
+            toggle.addEventListener('change', function() {
+                if (this.checked) {
+                    html.classList.add('dark-mode');
+                    localStorage.setItem('darkMode', 'enabled');
+                } else {
+                    html.classList.remove('dark-mode');
+                    localStorage.setItem('darkMode', 'disabled');
+                }
+            });
+        });
+
         // Age Counter
-        let isHovered = false;  // Track hover/toggle state
-        let isTouched = false;  // Track if it was touched (for mobile)
+        document.addEventListener('DOMContentLoaded', function() {
+            let isHovered = false;
+            let isTouched = false;
 
-        function updateAge() {
-            // Create birth date with explicit year, month, day, hour, minute in PST
-            // Note: Months are 0-indexed in JavaScript Date (0 = January, 6 = July)
-            const birthYear = 2002;
-            const birthMonth = 6;  // July (0-indexed)
-            const birthDay = 27;
-            const birthHour = 13;  // 1:40 PM = 13:40 in 24-hour format
-            const birthMinute = 40;
-            
-            // Create birth date in PST (UTC-7 for July due to daylight saving time)
-            const birthDate = new Date(Date.UTC(birthYear, birthMonth, birthDay, birthHour + 7, birthMinute));
-            const now = new Date();
-            
-            const diff = now - birthDate;
-            
-            // Calculate all time units
-            const years = diff / (1000 * 60 * 60 * 24 * 365.25);
-            const yearsInt = Math.floor(years);
-            const remainingDays = (years - yearsInt) * 365.25;
-            const daysInt = Math.floor(remainingDays);
-            const remainingHours = (remainingDays - daysInt) * 24;
-            const hoursInt = Math.floor(remainingHours);
-            const remainingMinutes = (remainingHours - hoursInt) * 60;
-            const minutesInt = Math.floor(remainingMinutes);
-            const remainingSeconds = (remainingMinutes - minutesInt) * 60;
-            const secondsInt = Math.floor(remainingSeconds);
+            function updateAge() {
+                // Birth date details
+                const birthYear = 2002;
+                const birthMonth = 6;  // July (0-indexed)
+                const birthDay = 27;
+                const birthHour = 13;
+                const birthMinute = 40;
+                
+                // Create birth date in PST (UTC-7 for July due to daylight saving time)
+                const birthDate = new Date(Date.UTC(birthYear, birthMonth, birthDay, birthHour + 7, birthMinute));
+                const now = new Date();
+                
+                const diff = now - birthDate;
+                
+                // Calculate all time units
+                const years = diff / (1000 * 60 * 60 * 24 * 365.25);
+                const yearsInt = Math.floor(years);
+                const remainingDays = (years - yearsInt) * 365.25;
+                const daysInt = Math.floor(remainingDays);
+                const remainingHours = (remainingDays - daysInt) * 24;
+                const hoursInt = Math.floor(remainingHours);
+                const remainingMinutes = (remainingHours - hoursInt) * 60;
+                const minutesInt = Math.floor(remainingMinutes);
+                const remainingSeconds = (remainingMinutes - minutesInt) * 60;
+                const secondsInt = Math.floor(remainingSeconds);
+
+                const ageCounter = document.getElementById('age-counter');
+                
+                // Store both formats
+                ageCounter.dataset.detailed = `${yearsInt} years, ${daysInt} days, ${hoursInt} hours, ${minutesInt} minutes, and ${secondsInt} seconds old`;
+                ageCounter.dataset.decimal = `${years.toFixed(10)}`;
+                
+                // Show the appropriate format based on hover/toggle state
+                ageCounter.textContent = (isHovered || isTouched) ? ageCounter.dataset.detailed : ageCounter.dataset.decimal;
+            }
 
             const ageCounter = document.getElementById('age-counter');
             
-            // Store both formats
-            ageCounter.dataset.detailed = `${yearsInt} years, ${daysInt} days, ${hoursInt} hours, ${minutesInt} minutes, and ${secondsInt} seconds old`;
-            ageCounter.dataset.decimal = `${years.toFixed(10)}`;
+            // Hover events for desktop
+            ageCounter.addEventListener('mouseenter', function() {
+                isHovered = true;
+                this.textContent = this.dataset.detailed;
+            });
             
-            // Show the appropriate format based on hover/toggle state
-            ageCounter.textContent = (isHovered || isTouched) ? ageCounter.dataset.detailed : ageCounter.dataset.decimal;
-        }
-
-        // Set up hover and touch events
-        const ageCounter = document.getElementById('age-counter');
-        
-        // Hover events for desktop
-        ageCounter.addEventListener('mouseenter', function() {
-            isHovered = true;
-            this.textContent = this.dataset.detailed;
-        });
-        ageCounter.addEventListener('mouseleave', function() {
-            isHovered = false;
-            if (!isTouched) {
-                this.textContent = this.dataset.decimal;
-            }
-        });
-        
-        // Touch events for mobile
-        ageCounter.addEventListener('click', function() {
-            isTouched = !isTouched; // Toggle the touch state
-            this.textContent = isTouched ? this.dataset.detailed : this.dataset.decimal;
-        });
-
-        // Update frequently
-        updateAge();
-        setInterval(updateAge, 50);
-    </script>
-    <!-- Newsletter Form Handling Script commented out
-    <script>
-        // Newsletter Form Handling
-        // Shared typo corrections
-        var commonTypos = {
-            "gmail.con": "gmail.com",
-            "gmail.co": "gmail.com",
-            "gamil.com": "gmail.com",
-            "gmai.com": "gmail.com",
-            "yahoo.con": "yahoo.com",
-            "yaho.com": "yahoo.com",
-            "hotmail.con": "hotmail.com",
-            "hotmai.com": "hotmail.com",
-            "outlook.con": "outlook.com",
-            "outloo.com": "outlook.com",
-        };
-
-        document.addEventListener("DOMContentLoaded", function() {
-            var form = document.getElementById("subscribe-form");
-            var emailInput = document.getElementById("subscribe-email");
-            var formMessage = document.getElementById("formMessage");
-
-            function validateEmail(email) {
-                var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                var regexResult = re.test(String(email).toLowerCase());
-
-                if (!regexResult) {
-                    return false;
+            ageCounter.addEventListener('mouseleave', function() {
+                isHovered = false;
+                if (!isTouched) {
+                    this.textContent = this.dataset.decimal;
                 }
+            });
+            
+            // Touch events for mobile
+            ageCounter.addEventListener('click', function() {
+                isTouched = !isTouched;
+                this.textContent = isTouched ? this.dataset.detailed : this.dataset.decimal;
+            });
 
-                var parts = email.split("@");
-                var domain = parts[1].toLowerCase();
-
-                // Explicitly validate gmail.com
-                if (domain === "gmail.com") {
-                    return true;
-                }
-
-                if (commonTypos.hasOwnProperty(domain)) {
-                    var suggestion = parts[0] + "@" + commonTypos[domain];
-                    return suggestion;
-                }
-
-                if (domain.endsWith(".con")) {
-                    return false;
-                }
-
-                return true;
-            }
-
-            function showMessage(message, isError = false) {
-                formMessage.textContent = message;
-                formMessage.style.color = "var(--text-color)";
-            }
-
-            function suggestCorrection(email) {
-                var parts = email.split("@");
-                var domain = parts[1].toLowerCase();
-
-                if (commonTypos.hasOwnProperty(domain)) {
-                    var suggestion = parts[0] + "@" + commonTypos[domain];
-                    return suggestion;
-                }
-
-                if (domain.endsWith(".con")) {
-                    var suggestion = email.slice(0, -3) + "com";
-                    return suggestion;
-                }
-
-                return null;
-            }
-
-            if (form) {
-                form.addEventListener("submit", function(e) {
-                    e.preventDefault();
-
-                    var email = emailInput.value.trim();
-
-                    if (!email) {
-                        showMessage("Please enter an email address.", true);
-                        return;
-                    }
-
-                    var validationResult = validateEmail(email);
-
-                    if (validationResult !== true) {
-                        var message = "Please enter a valid email address.";
-                        if (typeof validationResult === "string") {
-                            message += " Did you mean " + validationResult + "?";
-                        } else {
-                            var suggestion = suggestCorrection(email);
-                            if (suggestion) {
-                                message += " Did you mean " + suggestion + "?";
-                            }
-                        }
-                        showMessage(message, true);
-                        return;
-                    }
-
-                    var url = "https://docs.google.com/forms/d/e/1FAIpQLScQVt95jDlVAcgca1lN65mCK3BSj0Ffp8JmMbpMDNli2-VUuA/formResponse";
-                    
-                    window.location.href = url + "?entry.123456789=" + encodeURIComponent(email);
-                });
-
-                emailInput.addEventListener("blur", function() {
-                    var email = this.value.trim();
-                    var validationResult = validateEmail(email);
-                    if (email && validationResult !== true) {
-                        var message = "Please enter a valid email address.";
-                        if (typeof validationResult === "string") {
-                            message += " Did you mean " + validationResult + "?";
-                        } else {
-                            var suggestion = suggestCorrection(email);
-                            if (suggestion) {
-                                message += " Did you mean " + suggestion + "?";
-                            }
-                        }
-                        showMessage(message, true);
-                    } else {
-                        formMessage.textContent = "";
-                    }
-                });
-            }
+            // Update frequently
+            updateAge();
+            setInterval(updateAge, 50);
         });
     </script>
-    -->
 </body>
 
 </html>
