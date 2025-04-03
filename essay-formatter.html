@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essay Formatter - Google Docs to HTML</title>
+    <style>
+        :root {
+            --bg-color: #f0efea;
+            --text-color: #141413;
+            --primary-color: #4a5568;
+            --border-color: #cbd5e0;
+            --success-color: #48bb78;
+            --error-color: #e53e3e;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        h1 {
+            font-size: 2em;
+            text-align: center;
+            grid-column: 1 / -1;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            min-height: 300px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .output {
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 10px;
+            min-height: 300px;
+            white-space: pre-wrap;
+            background-color: white;
+            overflow: auto;
+        }
+
+        .preview {
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 10px 20px;
+            min-height: 300px;
+            background-color: white;
+            overflow: auto;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .message {
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .success {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .error {
+            background-color: var(--error-color);
+            color: white;
+        }
+
+        .template-info {
+            grid-column: 1 / -1;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.05);
+            border-radius: 4px;
+        }
+
+        .tabs {
+            display: flex;
+            grid-column: 1 / -1;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+            background-color: #f8f9fa;
+            border-radius: 4px 4px 0 0;
+            margin-right: 5px;
+        }
+
+        .tab.active {
+            background-color: white;
+            border-bottom: 1px solid white;
+        }
+
+        .tab-content {
+            display: none;
+            grid-column: 1 / -1;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Essay Formatter - Google Docs to HTML</h1>
+
+        <div class="tabs">
+            <div class="tab active" data-tab="convert">Convert Essay</div>
+            <div class="tab" data-tab="template">Template Info</div>
+            <div class="tab" data-tab="help">Help</div>
+        </div>
+
+        <div class="tab-content active" id="convert-tab">
+            <div class="form-group">
+                <label for="essayTitle">Essay Title:</label>
+                <input type="text" id="essayTitle" placeholder="Enter your essay title here">
+            </div>
+
+            <div class="form-group">
+                <label for="essaySubtitle">Essay Subtitle (optional):</label>
+                <input type="text" id="essaySubtitle" placeholder="Enter a subtitle if needed">
+            </div>
+
+            <div class="form-group">
+                <label for="essayDate">Publication Date:</label>
+                <input type="date" id="essayDate">
+            </div>
+
+            <div class="form-group">
+                <label for="essaySlug">URL Slug:</label>
+                <input type="text" id="essaySlug" placeholder="essay-url-slug (e.g., my-essay-title)">
+            </div>
+
+            <div class="form-group">
+                <label for="essayContent">Paste your Google Docs essay here:</label>
+                <textarea id="essayContent" placeholder="Paste your essay content from Google Docs here"></textarea>
+            </div>
+
+            <div class="controls">
+                <button id="formatButton">Format to HTML</button>
+                <button id="copyButton">Copy HTML</button>
+                <button id="downloadButton">Download HTML File</button>
+                <button id="generateFullHTML">Generate Full Page</button>
+            </div>
+
+            <div id="message" class="message"></div>
+
+            <h2>HTML Output:</h2>
+            <div class="output" id="htmlOutput"></div>
+
+            <h2>Preview:</h2>
+            <div class="preview" id="previewOutput"></div>
+        </div>
+
+        <div class="tab-content" id="template-tab">
+            <div class="template-info">
+                <h2>About the Template</h2>
+                <p>This tool helps you format your Google Docs essays into HTML that matches your website template. The generated HTML will include:</p>
+                <ul>
+                    <li>Properly formatted paragraphs</li>
+                    <li>Title and subtitle</li>
+                    <li>Publication date</li>
+                    <li>Basic formatting (italics, bold)</li>
+                </ul>
+                <p>You can use this tool in two ways:</p>
+                <ol>
+                    <li><strong>Format Content Only:</strong> Use the "Format to HTML" button to generate just the essay content HTML.</li>
+                    <li><strong>Generate Full Page:</strong> Use the "Generate Full Page" button to create a complete HTML page based on the template.</li>
+                </ol>
+                <p>To use the full page template:</p>
+                <ol>
+                    <li>Enter all required fields (title, subtitle, and URL slug)</li>
+                    <li>Select your publication date from the date picker</li>
+                    <li>Paste your essay content</li>
+                    <li>Click "Generate Full Page"</li>
+                    <li>Download the generated HTML file</li>
+                    <li>Save the file with an appropriate name (e.g., my-essay.html)</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="tab-content" id="help-tab">
+            <div class="template-info">
+                <h2>How to Use This Tool</h2>
+                <ol>
+                    <li><strong>Copy from Google Docs:</strong> Select all content in your Google Docs essay and copy it (Ctrl+C or Command+C)</li>
+                    <li><strong>Fill out the form:</strong> Enter your essay title, subtitle (if any), and select a publication date</li>
+                    <li><strong>Paste content:</strong> Paste your copied essay into the textarea</li>
+                    <li><strong>Format to HTML:</strong> Click the "Format to HTML" button</li>
+                    <li><strong>Review the preview:</strong> Check that the formatting looks correct</li>
+                    <li><strong>Copy or download:</strong> Use the buttons to copy the HTML or download it as a file</li>
+                </ol>
+
+                <h3>Tips for Best Results</h3>
+                <ul>
+                    <li>Make sure your Google Doc uses standard paragraph formatting</li>
+                    <li>The tool will preserve basic formatting like <em>italics</em> and <strong>bold</strong></li>
+                    <li>If you have complex formatting or special elements, you may need to adjust the HTML manually</li>
+                </ul>
+
+                <h3>For Section Headers</h3>
+                <p>Use Markdown-style heading syntax for section titles:</p>
+                <ul>
+                    <li><code>## Section Title</code> - Creates an H2 heading</li>
+                    <li><code>### Subsection Title</code> - Creates an H3 heading</li>
+                    <li><code>#### Minor Section</code> - Creates an H4 heading</li>
+                </ul>
+                <p>For example, to create a section like "II. The First Cut" in your essay, format it as:</p>
+                <pre>## II. The First Cut</pre>
+                <p>Make sure to put section headers on their own lines, separated from paragraphs.</p>
+
+                <h3>Text Formatting</h3>
+                <p>You can use these Markdown-style formats in your text:</p>
+                <ul>
+                    <li><code>*text*</code> or <code>_text_</code> - Makes text <i>italic</i></li>
+                    <li><code>**text**</code> or <code>__text__</code> - Makes text <strong>bold</strong></li>
+                </ul>
+                <p>For example: "This is <code>*italic*</code> and this is <code>**bold**</code>" becomes "This is <i>italic</i> and this is <strong>bold</strong>"</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab functionality
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabName = tab.getAttribute('data-tab');
+                    
+                    // Update active tab
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    // Show active content
+                    document.querySelectorAll('.tab-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    document.getElementById(`${tabName}-tab`).classList.add('active');
+                });
+            });
+
+            // Set today's date as default
+            const today = new Date();
+            const formattedDate = today.toISOString().substring(0, 10);
+            document.getElementById('essayDate').value = formattedDate;
+
+            // Format button click handler
+            document.getElementById('formatButton').addEventListener('click', formatEssay);
+            
+            // Copy button click handler
+            document.getElementById('copyButton').addEventListener('click', copyToClipboard);
+            
+            // Download button click handler
+            document.getElementById('downloadButton').addEventListener('click', downloadHTML);
+            
+            // Generate Full HTML button click handler
+            document.getElementById('generateFullHTML').addEventListener('click', generateFullHTML);
+        });
+
+        function formatEssay() {
+            const title = document.getElementById('essayTitle').value.trim();
+            const subtitle = document.getElementById('essaySubtitle').value.trim();
+            const dateInput = document.getElementById('essayDate').value;
+            const content = document.getElementById('essayContent').value;
+            
+            if (!title) {
+                showMessage('Please enter an essay title', 'error');
+                return;
+            }
+            
+            if (!content) {
+                showMessage('Please paste your essay content', 'error');
+                return;
+            }
+
+            // Format the date
+            const date = new Date(dateInput);
+            const formattedDate = formatDate(date);
+            
+            // Process content - split into paragraphs and format
+            const paragraphs = content.split(/\n+/).filter(p => p.trim() !== '');
+            
+            // Generate HTML
+            let htmlOutput = `<h1>${escapeHTML(title)}</h1>\n`;
+            
+            if (subtitle) {
+                htmlOutput += `<h4>${escapeHTML(subtitle)}</h4>\n`;
+            }
+            
+            htmlOutput += `<p class="author-date">\n    <time datetime="${dateInput}">${formattedDate}</time>\n</p>\n\n`;
+            
+            // Add paragraphs
+            paragraphs.forEach(paragraph => {
+                const trimmedParagraph = paragraph.trim();
+                
+                // Check if this is a section header (matches ## Title pattern)
+                const headerMatch = trimmedParagraph.match(/^(#{2,6})\s+(.+)$/);
+                
+                if (headerMatch) {
+                    // It's a heading - determine the level (h2, h3, etc.)
+                    const headerLevel = headerMatch[1].length;
+                    const headerText = headerMatch[2].trim();
+                    htmlOutput += `<h${headerLevel}>${formatParagraphContent(headerText)}</h${headerLevel}>\n`;
+                } else {
+                    // Regular paragraph
+                    const formattedParagraph = formatParagraphContent(trimmedParagraph);
+                    htmlOutput += `<p>\n    ${formattedParagraph}\n</p>\n`;
+                }
+            });
+            
+            // Display HTML
+            document.getElementById('htmlOutput').textContent = htmlOutput;
+            
+            // Show preview
+            document.getElementById('previewOutput').innerHTML = htmlOutput;
+            
+            showMessage('HTML formatted successfully!', 'success');
+        }
+
+        function formatParagraphContent(paragraph) {
+            // Handle basic formatting
+            
+            // First, escape any HTML to prevent injection
+            let formatted = escapeHTML(paragraph);
+            
+            // Convert *text* to <i>text</i> (single asterisks for italics)
+            formatted = formatted.replace(/\*([^*]+)\*/g, '<i>$1</i>');
+            
+            // Convert _text_ to <i>text</i> (underscores for italics)
+            formatted = formatted.replace(/_([^_]+)_/g, '<i>$1</i>');
+            
+            // Convert **text** to <strong>text</strong> (double asterisks for bold)
+            formatted = formatted.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+            
+            // Convert __text__ to <strong>text</strong> (double underscores for bold)
+            formatted = formatted.replace(/__([^_]+)__/g, '<strong>$1</strong>');
+            
+            return formatted;
+        }
+
+        function formatDate(date) {
+            const months = [
+                'January', 'February', 'March', 'April', 'May', 'June', 
+                'July', 'August', 'September', 'October', 'November', 'December'
+            ];
+            
+            const day = date.getDate();
+            const month = months[date.getMonth()];
+            const year = date.getFullYear();
+            
+            return `${day} ${month} ${year}`;
+        }
+
+        function escapeHTML(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function copyToClipboard() {
+            const htmlOutput = document.getElementById('htmlOutput');
+            
+            if (!htmlOutput.textContent.trim()) {
+                showMessage('Nothing to copy. Format your essay first.', 'error');
+                return;
+            }
+            
+            navigator.clipboard.writeText(htmlOutput.textContent)
+                .then(() => {
+                    showMessage('HTML copied to clipboard!', 'success');
+                })
+                .catch(err => {
+                    showMessage('Failed to copy: ' + err, 'error');
+                    console.error('Failed to copy: ', err);
+                });
+        }
+
+        function downloadHTML() {
+            const htmlOutput = document.getElementById('htmlOutput').textContent;
+            
+            if (!htmlOutput.trim()) {
+                showMessage('Nothing to download. Format your essay first.', 'error');
+                return;
+            }
+            
+            const title = document.getElementById('essayTitle').value.trim();
+            const fileName = title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') + '.html';
+            
+            const blob = new Blob([htmlOutput], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = fileName;
+            a.click();
+            
+            URL.revokeObjectURL(url);
+            showMessage(`Downloaded as ${fileName}`, 'success');
+        }
+
+        function generateFullHTML() {
+            const title = document.getElementById('essayTitle').value.trim();
+            const subtitle = document.getElementById('essaySubtitle').value.trim();
+            const slug = document.getElementById('essaySlug').value.trim() || title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+            const dateInput = document.getElementById('essayDate').value;
+            
+            if (!title) {
+                showMessage('Please enter an essay title', 'error');
+                return;
+            }
+            
+            if (!subtitle) {
+                showMessage('Please enter an essay subtitle', 'error');
+                return;
+            }
+            
+            // Format the essay first to include the selected date
+            formatEssay();
+            
+            const contentHTML = document.getElementById('htmlOutput').textContent;
+            
+            if (!contentHTML) {
+                showMessage('Failed to format essay content', 'error');
+                return;
+            }
+            
+            // Fetch the template
+            fetch('template.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Template not found. Please make sure template.html exists in the same directory.');
+                    }
+                    return response.text();
+                })
+                .then(template => {
+                    // Replace placeholders
+                    let fullHTML = template;
+                    fullHTML = fullHTML.replace(new RegExp("<!-- ESSAY_TITLE -->", "g"), escapeHTML(title));
+                    fullHTML = fullHTML.replace(new RegExp("<!-- ESSAY_SUBTITLE -->", "g"), escapeHTML(subtitle));
+                    fullHTML = fullHTML.replace(new RegExp("<!-- ESSAY_SLUG -->", "g"), slug);
+                    fullHTML = fullHTML.replace(new RegExp("<!-- ESSAY_CONTENT -->", "g"), contentHTML);
+                    
+                    // Display the full HTML
+                    document.getElementById('htmlOutput').textContent = fullHTML;
+                    
+                    showMessage('Full HTML page generated successfully!', 'success');
+                })
+                .catch(error => {
+                    showMessage(error.message, 'error');
+                    console.error('Error:', error);
+                });
+        }
+
+        function showMessage(text, type) {
+            const messageElement = document.getElementById('message');
+            messageElement.textContent = text;
+            messageElement.className = 'message ' + type;
+            messageElement.style.display = 'block';
+            
+            setTimeout(() => {
+                messageElement.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</body>
+</html> 
