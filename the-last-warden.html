@@ -1,0 +1,1004 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- Page Title -->
+    <title><!-- ESSAY_TITLE --></title>
+
+    <!-- Open Graph Meta -->
+    <meta property="og:title" content="<!-- ESSAY_TITLE -->"/>
+    <meta property="og:description" content="<!-- ESSAY_SUBTITLE -->"/>
+    <meta property="og:url" content="https://parkerbeard.com/<!-- ESSAY_SLUG -->"/>
+    <meta property="og:image" content="https://parkerbeard.com/images/<!-- ESSAY_SLUG -->-card.png"/>
+
+    <!-- Twitter Card Meta -->
+    <meta name="twitter:card" content="summary_large_image"/>
+
+    <!-- Author & Description -->
+    <meta name="author" content="Parker Beard"/>
+    <meta name="description" content="<!-- ESSAY_SUBTITLE -->"/>
+
+    <!-- Inline Style/Fonts -->
+    <style>
+        html {
+            visibility: hidden;
+        }
+
+        html.js-loaded {
+            visibility: visible;
+        }
+
+        header h1 a {
+            display: block;
+            width: 140px;
+            font-family: Newsreader;
+        }
+
+        /* Add bottom spacing to the content */
+        .content-wrapper {
+            padding-bottom: 6rem;
+        }
+
+        /* Ensure the last paragraph has margin too */
+        .content-container p:last-child {
+            margin-bottom: 6rem;
+        }
+        
+        /* Control paragraph spacing */
+        .content-container p {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Add space after paragraph groups */
+        .content-container p.group-end {
+            margin-bottom: 2rem;
+        }
+    </style>
+
+    <!-- Preloading fonts (optional) -->
+    <link rel="preload" href="fonts/Newsreader.woff2" as="font" type="font/woff2" crossorigin/>
+    <link rel="preload" href="fonts/Newsreader-italic.woff2" as="font" type="font/woff2" crossorigin/>
+
+    <!-- Main styles -->
+    <link rel="stylesheet" href="styles.css"/>
+
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+    <link rel="alternate icon" type="image/png" href="favicon-32x32.png"/>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+
+    <!-- Dark Mode Script -->
+    <script>
+        (function() {
+            try {
+                const root = document.documentElement;
+                const classes = ["preload"];
+
+                if (localStorage.getItem("darkMode") === "enabled") {
+                    classes.push("dark-mode");
+                    root.style.setProperty("--bg-color", "#141413");
+                    root.style.setProperty("--text-color", "#f0efea");
+                }
+
+                root.classList.add(...classes);
+
+                queueMicrotask(() => {
+                    root.classList.add("js-loaded");
+                });
+            } catch (e) {
+                document.documentElement.classList.add("preload", "js-loaded");
+            }
+        })();
+    </script>
+
+    <!-- Additional Scripts -->
+    <script src="darkmode.js" defer></script>
+    <script src="footnotes.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div>
+            <h1>
+                <a href="./">Parker Beard</a>
+            </h1>
+            <div class="header-controls">
+                <div class="toggle-switch">
+                    <input type="checkbox" id="darkModeToggle" class="toggle-input"/>
+                    <label for="darkModeToggle" class="toggle-label">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        <article class="content-container">
+            <h1>The Last Warden</h1>
+            <h4>The Cost of an Open Sky</h4>
+            <p class="author-date">
+                <time datetime="2025-04-07">7 April 2025</time>
+            </p>
+            
+            <h3>I. The First Canopy</h3>
+            <p class="group-end">
+                Before men shaped the world, the world shaped them.
+            </p>
+            <p>
+                The forest was deep, its roots locked in silent embrace.
+            </p>
+            <p>
+                Trees stood like pillars, their branches a vaulted sky of green and gold.
+            </p>
+            <p>
+                In the quiet of dawn, mist drifted low over water that ran clean and pure
+            </p>
+            <p class="group-end">
+                At dusk, the leaves caught the last light like embers, the air thick with pine.
+            </p>
+            <p>
+                It was not ruled, for it did not need to be.
+            </p>
+            <p class="group-end">
+                It needed no governance; even its imperfections belonged to a deeper harmony.
+            </p>
+            <p class="group-end">
+                It lasted, quietly defiant against time.
+            </p>
+            <p>
+                Men lived beneath this canopy, not as masters, but as stewards.
+            </p>
+            <p>
+                They lived and died beneath the trees; their blood fed its roots.
+            </p>
+            <p>
+                Each man had his place, his burden, his portion of the whole.
+            </p>
+            <p class="group-end">
+                The trees held them together—not by law, nor by force, but by the weight of natural order
+            </p>
+            <p>
+                The roots bound the land as duty bound its people.
+            </p>
+            <p>
+                Their shade stretched wide as the bonds between kin.
+            </p>
+            <p>
+                Their branches climbed toward heaven, as men once did.
+            </p>
+            <p>
+                For as long as the trees stood, the land was strong.
+            </p>
+            <p class="group-end">
+                In the land's strength, men endured its weight.
+            </p>
+            <p>
+                But strength does not lessen with time,
+            </p>
+            <p class="group-end">
+                And in time, some began to ask:
+            </p>
+            <p class="group-end">
+                <b>"Why must the trees stand so close? Why must we all shelter beneath the same shade?"</b>
+            </p>
+            <p>
+                These were not the words of traitors, not of fools,
+            </p>
+            <p class="group-end">
+                But of men who have never known the cost of an open sky
+            </p>
+            <h3>II. The First Cut</h3>
+            <p class="group-end">
+                The trees had stood for so long that men no longer knew why they stood at all.
+            </p>
+            <p>
+                Their fathers had built nothing new, for what else was needed?
+            </p>
+            <p class="group-end">
+                Their laws had not changed, for change had never been required.
+            </p>
+            <p>
+                The trees sheltered them, held them, bound them together.
+            </p>
+            <p class="group-end">
+                But in time, men no longer saw them as shelter; they saw them as walls.
+            </p>
+            <p>
+                It was not conquest that brought the first axe.
+            </p>
+            <p>
+                Nor treachery.
+            </p>
+            <p class="group-end">
+                Nor even greed.
+            </p>
+            <p class="group-end">
+                It was restlessness.
+            </p>
+            <p class="group-end">
+                It was the hunger for something else, even if they did not know what.
+            </p>
+            <p>
+                The man who struck the first blow did not seek to destroy.
+            </p>
+            <p class="group-end">
+                He only wished to see further.
+            </p>
+            <p class="group-end">
+                The axe bit deep.
+            </p>
+            <p class="group-end">
+                A wound in its side, a silence in the forest.
+            </p>
+            <p class="group-end">
+                Then, with a great groan, it <b>fell</b>.
+            </p>
+            <p class="group-end">
+                The earth shuddered.
+            </p>
+            <p>
+                Leaves burst into the air like startled birds.
+            </p>
+            <p class="group-end">
+                The canopy split apart, and heaven rushed in—vast, brilliant, infinite.
+            </p>
+            <p>
+                For the first time, the world was wide.
+            </p>
+            <p class="group-end">
+                And in that widening, <b>something broke</b>.
+            </p>
+            <p>
+                The others stood at the edge of the clearing, staring into the open sky.
+            </p>
+            <p class="group-end">
+                They had never seen the sun so bright, never felt the wind so unbound.
+            </p>
+            <p>
+                But beneath their feet, the roots curled inward.
+            </p>
+            <p class="group-end">
+                The soul, once held firm, loosened slightly.
+            </p>
+            <p class="group-end">
+                And in the hush that followed, in the breath between what could have been and what would become—
+            </p>
+            <p class="group-end">
+                There was a choice.
+            </p>
+            <p class="group-end">
+                They could have stopped.
+            </p>
+            <p class="group-end">
+                They could have let the silence settle, let the forest mend, let the wound heal.
+            </p>
+            <p class="group-end">
+                But who could deny the beauty of an open horizon?
+            </p>
+            <p class="group-end">
+                And so they cut another.
+            </p>
+            <p class="group-end">
+                And another.
+            </p>
+            <p>
+                At first, the canopy thinned, and they rejoiced.
+            </p>
+            <p>
+                Then the ground dried, but they scarcely noticed.
+            </p>
+            <p class="group-end">
+                For their eyes were fixed upward, their hearts captured by the promise of an open sky.
+            </p>
+            <h3>III. The Clearing</h3>
+            <p>
+                For a time, the clearing flourished.
+            </p>
+            <p class="group-end">
+                The sky, once hidden, opened wide.
+            </p>
+            <p>
+                Towers rose where trees had stood, roads sprawled where roots had once held firm.
+            </p>
+            <p class="group-end">
+                No longer did all men walk the same path, no longer did they speak with a single tongue.
+            </p>
+            <p>
+                The keepers were entrusted to guard memory and tradition.
+            </p>
+            <p>
+                They opened their gates—
+            </p>
+            <p>
+                First, to those who hungered for the fruit;
+            </p>
+            <p>
+                Then, to those who promised growth from timber;
+            </p>
+            <p class="group-end">
+                And last, with weary resignation, to those who asked nothing yet took <b>everything</b>.
+            </p>
+            <p>
+                At first, the keepers. still spoke reverently of the trees.
+            </p>
+            <p>
+                They traced carefully where roots had run deep,
+            </p>
+            <p class="group-end">
+                They marked faithfully where branches had sheltered generations.
+            </p>
+            <p>
+                But memory is weaker than stone,
+            </p>
+            <p class="group-end">
+                And soon the clearing stretched further.
+            </p>
+            <p>
+                Those who had seen the trees grew old;
+            </p>
+            <p>
+                Those who had not seen them grew numerous;
+            </p>
+            <p class="group-end">
+                Those who only knew only tales grew skeptical.
+            </p>
+            <p>
+                Fruit was gathered, yet no seeds returned to earth.
+            </p>
+            <p>
+                Wood was carried off, yet no groves arose in their place.
+            </p>
+            <p class="group-end">
+                Land, once carefully tended, now lay starving
+            </p>
+            <p class="group-end">
+                And then came the question, quiet yet piercing:
+            </p>
+            <p class="group-end">
+                <strong><i>"If the trees were so strong, why did they fall?"</i></strong>
+            </p>
+            <p>
+                The past grew faint as the sky loomed larger.
+            </p>
+            <p class="group-end">
+                History became memory, memory faded into myth, and myth dissolved into silence.
+            </p>
+            <p>
+                And from that silence emerged men who waited,
+            </p>
+            <p>
+                Shadow men who built nothing, sowed nothing—yet gathered everything.
+            </p>
+            <p>
+                They did not speak loudly, for they did not need to.
+            </p>
+            <p class="group-end">
+                They knew precisely what to do with a land that had forgotten itself.
+            </p>
+            <p>
+                The keepers spoke no more of trees.
+            </p>
+            <p>
+                They recited the old ways, but only as fables.
+            </p>
+            <p>
+                They gathered in councils, but only to postpone decision.
+            </p>
+            <p class="group-end">
+                They invoked unity, but only fueled dissent
+            </p>
+            <p>
+                And at last, turning desperately to one another, searching for something still shared—
+            </p>
+            <p class="group-end">
+                <b>They found only dust</b>.
+            </p>
+            <h3>IV. A Quiet Exchange</h3>
+            <p>
+                The shadow men had always been there.
+            </p>
+            <p>
+                They did not build.
+            </p>
+            <p>
+                They did not sow.
+            </p>
+            <p>
+                Their faith was emptiness, their sacrament subtlety.
+            </p>
+            <p class="group-end">
+                Decay rewards those who outlast purpose.
+            </p>
+            <p>
+                They carried no banners, raised no armies,
+            </p>
+            <p>
+                They came softly—as merchants, as scribes,
+            </p>
+            <p class="group-end">
+                As gentle men with careful hands.
+            </p>
+            <p class="group-end">
+                In the emptiness, they whispered softly, as always:
+            </p>
+            <p>
+                "<strong><i>Give me a piece of your land, and I will enrich it.</i></strong>"
+            </p>
+            <p class="group-end">
+                "<strong><i>Give me your voice, and the world shall hear your song.</i></strong>"
+            </p>
+            <p>
+                Soon, whispers became invitations, open and warm.
+            </p>
+            <p>
+                The wardens—sworn guardians of fading meaning—
+            </p>
+            <p>
+                Welcomed them, mistaking quiet confidence for wisdom,
+            </p>
+            <p class="group-end">
+                Commerce for renewal.
+            </p>
+            <p>
+                Piece by piece, the world was sold.
+            </p>
+            <p>
+                Not by conquest, but gently—by compromise,
+            </p>
+            <p class="group-end">
+                By hands that forgot how to hold loss.
+            </p>
+            <p>
+                They did not fell the trees;
+            </p>
+            <p class="group-end">
+                They merely accepted what was freely offered.
+            </p>
+            <p>
+                And when the towers began to sink,
+            </p>
+            <p>
+                The wardens pleaded for answers,
+            </p>
+            <p class="group-end">
+                But the shadow men only smiled.
+            </p>
+            <p class="group-end">
+                Their work was finished.
+            </p>
+            <h3>V. The Last Tower</h3>
+            <p>
+                The wardens guarded only what remained when meaning fled:
+            </p>
+            <p>
+                Laws without spirit,
+            </p>
+            <p>
+                Walls without roots,
+            </p>
+            <p class="group-end">
+                Words without belief.
+            </p>
+            <p>
+                They preserved memory instead of land,
+            </p>
+            <p>
+                Built monuments instead of tending groves,
+            </p>
+            <p class="group-end">
+                Measured fractures and named them order.
+            </p>
+            <p>
+                They spoke of duty, delaying ruin,
+            </p>
+            <p>
+                Invoked honor, adorning robes—
+            </p>
+            <p class="group-end">
+                Recalling the past only to confirm that its absence.
+            </p>
+            <p>
+                And when the land could yield nothing more, they left.
+            </p>
+            <p>
+                Some took what could still be carried—gold, titles, fragments of a world already traded.
+            </p>
+            <p class="group-end">
+                Some vanished behind walls; others dissolved quietly into dust.
+            </p>
+            <p>
+                And in the end, only one remained.
+            </p>
+            <p>
+                Not because anything was left to rule.
+            </p>
+            <p>
+                Nor because anything was left to save—
+            </p>
+            <p class="group-end">
+                But because the land was in him, and he could not let go.
+            </p>
+            <p>
+                He had worn their name, stood among them, sworn their oaths—
+            </p>
+            <p class="group-end">
+                But while they had only spoken of the land, he had loved it.
+            </p>
+            <p>
+                He had walked beneath its canopy in memories older than himself.
+            </p>
+            <p>
+                He had knelt under the shade and felt its weight.
+            </p>
+            <p class="group-end">
+                He had pressed his hands into the earth and known, without words, that it was sacred.
+            </p>
+            <p>
+                He watched shadow men trade trees for towers,
+            </p>
+            <p>
+                Heard whispers become commerce,
+            </p>
+            <p class="group-end">
+                Felt promises hollow into silence.
+            </p>
+            <p>
+                Standing atop the last tower, he saw dust—
+            </p>
+            <p>
+                Dust drifting across empty roads,
+            </p>
+            <p>
+                Settling on fields no hand had tilled,
+            </p>
+            <p class="group-end">
+                Rising from temples where men prayed only to themselves.
+            </p>
+            <p>
+                The trees had not fallen.
+            </p>
+            <p>
+                They had been given away.
+            </p>
+            <p>
+                First for trade,
+            </p>
+            <p>
+                Then for peace,
+            </p>
+            <p class="group-end">
+                Finally, for nothing at all.
+            </p>
+            <p>
+                The forest was not taken, only quietly surrendered,
+            </p>
+            <p>
+                Until what remained was too small to name,
+            </p>
+            <p class="group-end">
+                Too broken to mourn.
+            </p>
+            <p>
+                The wardens had allowed it.
+            </p>
+            <p class="group-end">
+                They had profited from it.
+            </p>
+            <p>
+                Now alone, he felt the tower shudder beneath him—
+            </p>
+            <p>
+                Stone, heavy and rootless,
+            </p>
+            <p class="group-end">
+                Sinking slowly into earth.
+            </p>
+            <h3>VI. Beneath the Dust</h3>
+            <p>
+                He had spent his life tending the walls,
+            </p>
+            <p>
+                believing stone could bind the land—
+            </p>
+            <p class="group-end">
+                But stone binds nothing.
+            </p>
+            <p class="group-end">
+                It had been held by the trees.
+            </p>
+            <p class="group-end">
+                By the roots.
+            </p>
+            <p class="group-end">
+                By something deeper than law, older than words, stronger than walls.
+            </p>
+            <p class="group-end">
+                And now, it was <b>gone</b>.
+            </p>
+            <p>
+                The trees had fallen, shrivelled into memory.
+            </p>
+            <p class="group-end">
+                The ground had turned to dust.
+            </p>
+            <p class="group-end">
+                He had known this, but now, he <b>saw it</b>.
+            </p>
+            <p>
+                He walked through the husk of a world that no longer knew itself.
+            </p>
+            <p>
+                Past the towers that had become tombs.
+            </p>
+            <p>
+                Past the markets where nothing was made.
+            </p>
+            <p class="group-end">
+                Past streets with men free in name only.
+            </p>
+            <p>
+                He had thought himself the last keeper.
+            </p>
+            <p class="group-end">
+                But there was nothing left to keep.
+            </p>
+            <p>
+                He had thought himself the last warden.
+            </p>
+            <p class="group-end">
+                But there was nothing left to guard.
+            </p>
+            <p>
+                There was no forest to mend.
+            </p>
+            <p>
+                No path to clear.
+            </p>
+            <p class="group-end">
+                No hands left to build.
+            </p>
+            <p class="group-end">
+                Only silence remained.
+            </p>
+            <p class="group-end">
+                And for the first time, <b>he despaired</b>.
+            </p>
+            <p class="group-end">
+                For all his watching, for all his waiting, for all his remembering—what had it amounted to?
+            </p>
+            <p>
+                The land had been given away.
+            </p>
+            <p class="group-end">
+                The root had been forgotten.
+            </p>
+            <p class="group-end">
+                And the weight of it broke something in him.
+            </p>
+            <p>
+                His hands, which steadied stone, which had held the last remnants of the old world together, trembled.
+            </p>
+            <p class="group-end">
+                His breath, which had been steady through ruin, through betrayal, through the slow unraveling of all he had loved, caught in his throat.
+            </p>
+            <p class="group-end">
+                He fell to his knees, not in reverence, but in exhaustion.
+            </p>
+            <p class="group-end">
+                <b>It is too late.</b>
+            </p>
+            <p class="group-end">
+                <b>It is too far gone.</b>
+            </p>
+            <p class="group-end">
+                <b>Nothing will ever grow here again.</b>
+            </p>
+            <p class="group-end">
+                And in that moment, the last warden was only a man.
+            </p>
+            <p>
+                A man who had carried something too heavy for too long.
+            </p>
+            <p>
+                A man who had believed he could stand when all else had fallen.
+            </p>
+            <p class="group-end">
+                A man who had never let himself break until now.
+            </p>
+            <p class="group-end">
+                And so he knelt, not to seek, not to pray, but because <b>he had nowhere else to go</b>.
+            </p>
+            <p class="group-end">
+                His hands pressed into the dirt.
+            </p>
+            <p class="group-end">
+                And for a long time, there was only silence.
+            </p>
+            <p>
+                The silence of towers already fallen.
+            </p>
+            <p>
+                The silence of roads winding to nowhere.
+            </p>
+            <p class="group-end">
+                The silence of a world unmade, waiting to be forgotten.
+            </p>
+            <p class="group-end">
+                And then—
+            </p>
+            <p class="group-end">
+                <b>He felt it.</b>
+            </p>
+            <p class="group-end">
+                Not as stone feels weight, not as walls bear burden, but as roots feel water.
+            </p>
+            <p class="group-end">
+                Deep beneath ruin, beneath neglect, beneath forgotten years—
+            </p>
+            <p class="group-end">
+                <b>Something lived.</b>
+            </p>
+            <p class="group-end">
+                His breath caught, but not in despair.
+            </p>
+            <p>
+                His fingers dug deeper, pushing through dry earth, through lifeless soil—
+            </p>
+            <p class="group-end">
+                Until at last, he touched it.
+            </p>
+            <p class="group-end">
+                <strong><i>The root. </i></strong>
+            </p>
+            <p>
+                Thin, buried, starved of light—
+            </p>
+            <p class="group-end">
+                But <b>alive.</b>
+            </p>
+            <p class="group-end">
+                His chest shuddered.
+            </p>
+            <p class="group-end">
+                It had not died.
+            </p>
+            <p class="group-end">
+                It had only waited.
+            </p>
+            <h3>VII. A Crown of Roots</h3>
+            <p class="group-end">
+                The forest had been lost, and it would not return.
+            </p>
+            <p>
+                The old paths had faded.
+            </p>
+            <p>
+                The old bonds had broken.
+            </p>
+            <p class="group-end">
+                The old songs had been sung for the last time.
+            </p>
+            <p class="group-end">
+                But the root remained.
+            </p>
+            <p>
+                Many had wandered too far.
+            </p>
+            <p>
+                Many had forgotten too much.
+            </p>
+            <p class="group-end">
+                But for those who still knew, even if they did not yet understand—
+            </p>
+            <p class="group-end">
+                There was a way back.
+            </p>
+            <p class="group-end">
+                The first tree grew in silence.
+            </p>
+            <p>
+                At first, no one saw.
+            </p>
+            <p class="group-end">
+                For men had long since forgotten what a tree looked like.
+            </p>
+            <p>
+                But the land felt it, the sky felt it.
+            </p>
+            <p class="group-end">
+                And something deep within the bones of the earth turned once more.
+            </p>
+            <p class="group-end">
+                The second tree grew faster. The third, faster still.
+            </p>
+            <p class="group-end">
+                And in time, men began to gather.
+            </p>
+            <p>
+                Not the shadow men, for they had vanished with the last trade.
+            </p>
+            <p class="group-end">
+                Not the wardens, for their towers had long since turned to dust.
+            </p>
+            <p class="group-end">
+                No—only those who felt the land stir within them, even if they did not yet know why.
+            </p>
+            <p>
+                They did not ask why they had come.
+            </p>
+            <p>
+                They did not speak of what had been lost.
+            </p>
+            <p class="group-end">
+                They did not need to.
+            </p>
+            <p>
+                For as the roots stretched unseen beneath their feet, something in them stretched too—
+            </p>
+            <p class="group-end">
+                <b>Something that had never truly left</b>
+            </p>
+            <p>
+                They did not call councils.
+            </p>
+            <p class="group-end">
+                They did not hold votes.
+            </p>
+            <p>
+                For a tree does not ask permission to grow.
+            </p>
+            <p class="group-end">
+                A tree does not seek approval to stand.
+            </p>
+            <p>
+                The man who had left the towers behind,
+            </p>
+            <p>
+                Who had knelt before the root,
+            </p>
+            <p class="group-end">
+                Who had placed his hands in the soil and felt not hope, but recognition.
+            </p>
+            <p>
+                He had spent his life tending the walls, believing the walls could hold the land together.
+            </p>
+            <p class="group-end">
+                But the land had never been held by stone.
+            </p>
+            <p>
+                It had been held by the trees.
+            </p>
+            <p class="group-end">
+                By the roots.
+            </p>
+            <p class="group-end">
+                By something deeper than law, older than words, stronger than walls.
+            </p>
+            <p class="group-end">
+                And so, as the trees returned, the people turned to him.
+            </p>
+            <p>
+                Not because he asked.
+            </p>
+            <p>
+                Not because he ruled.
+            </p>
+            <p class="group-end">
+                But because <b>he had listened.</b>
+            </p>
+            <p>
+                He wore no crown shaped by human hands—
+            </p>
+            <p class="group-end">
+                Crowns forged in gold, forged by force, by conquest or decree.
+            </p>
+            <p>
+                His crown was living—
+            </p>
+            <p>
+                Woven of roots, rising from earth, binding him not to power,
+            </p>
+            <p class="group-end">
+                But to the land itself.
+            </p>
+            <p>
+                And when he walked among the trees, they bent toward him,
+            </p>
+            <p class="group-end">
+                Recognizing their own.
+            </p>
+            <p>
+                For the people no longer knew how to want,
+            </p>
+            <p class="group-end">
+                he did not ask what they wanted.
+            </p>
+            <p>
+                He did seek wisdom among them,
+            </p>
+            <p class="group-end">
+                for they had lived too long without it.
+            </p>
+            <p class="group-end">
+                Instead, <b>he led them to the trees.</b>
+            </p>
+            <p>
+                Not in words, nor decrees, nor laws written on stone.
+            </p>
+            <p>
+                But in the weight of leaves.
+            </p>
+            <p>
+                The strength beneath their feet.
+            </p>
+            <p class="group-end">
+                The silence of wind whispering truths too deep for speech.
+            </p>
+            <p>
+                <b>They thought they were learning,</b>
+            </p>
+            <p class="group-end">
+                <b>But they were only remembering</b>
+            </p>
+            <p>
+                For the trees had not come back for them.
+            </p>
+            <p class="group-end">
+                They had simply come back.
+            </p>
+            <p class="group-end">
+                <b>Because that is what trees do.</b>
+            </p>
+            <p>
+                What rose now did not rest on walls, nor towers,
+            </p>
+            <p>
+                Nor halls when men argued over words.
+            </p>
+            <p>
+                It did not hold what could not be held,
+            </p>
+            <p class="group-end">
+                Nor preserve what was already dead.
+            </p>
+            <p>
+                It grew, as trees grow—
+            </p>
+            <p>
+                Slowly, quietly,
+            </p>
+            <p>
+                Roots that reached deep into earth,
+            </p>
+            <p class="group-end">
+                Branches stretching skyward,  never shadowing the heavens.
+            </p>
+            <p>
+                It did not call itself eternal.
+            </p>
+            <p class="group-end">
+                It claimed no immortality.
+            </p>
+            <p>
+                It only lived.
+            </p>
+            <p class="group-end">
+                And that was enough.
+            </p>
+            <p>
+                For this time, the root was known—
+            </p>
+            <p>
+                <strong><i>And as long as the root was known, </i></strong>
+            </p>
+            <p class="group-end">
+                <strong><i>The forest would stand. </i></strong>
+            </p>            
+        </article>
+    </main>
+</body>
+</html> 
