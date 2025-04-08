@@ -386,17 +386,17 @@
             // First, escape any HTML to prevent injection
             let formatted = escapeHTML(paragraph);
             
-            // Convert *text* to <i>text</i> (single asterisks for italics)
-            formatted = formatted.replace(/\*([^*]+)\*/g, '<i>$1</i>');
+            // Convert **text** to <strong>text</strong> (double asterisks for bold) - Non-greedy
+            formatted = formatted.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
             
-            // Convert _text_ to <i>text</i> (underscores for italics)
-            formatted = formatted.replace(/_([^_]+)_/g, '<i>$1</i>');
+            // Convert __text__ to <strong>text</strong> (double underscores for bold) - Non-greedy
+            formatted = formatted.replace(/__(.+?)__/g, '<strong>$1</strong>');
             
-            // Convert **text** to <strong>text</strong> (double asterisks for bold)
-            formatted = formatted.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+            // Convert *text* to <i>text</i> (single asterisks for italics) - Non-greedy
+            formatted = formatted.replace(/\*(.+?)\*/g, '<i>$1</i>');
             
-            // Convert __text__ to <strong>text</strong> (double underscores for bold)
-            formatted = formatted.replace(/__([^_]+)__/g, '<strong>$1</strong>');
+            // Convert _text_ to <i>text</i> (underscores for italics) - Non-greedy
+            formatted = formatted.replace(/_(.+?)_/g, '<i>$1</i>');
             
             return formatted;
         }
