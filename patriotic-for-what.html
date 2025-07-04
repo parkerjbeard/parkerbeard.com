@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- Page Title -->
+    <title>Patriotic for What?</title>
+
+    <!-- Open Graph Meta -->
+    <meta property="og:title" content="Patriotic for What?"/>
+    <meta property="og:description" content="A reflection on the American spirit"/>
+    <meta property="og:url" content="https://yourdomain.com/patriotic-for-what"/>
+    <meta property="og:image" content="https://yourdomain.com/images/patriotic-for-what-card.png"/>
+
+    <!-- Twitter Card Meta -->
+    <meta name="twitter:card" content="summary_large_image"/>
+
+    <!-- Author & Description -->
+    <meta name="author" content="Parker Beard"/>
+    <meta name="description" content="A reflection on the American spirit"/>
+
+    <!-- Inline Style/Fonts -->
+    <style>
+        html {
+            visibility: hidden;
+        }
+
+        html.js-loaded {
+            visibility: visible;
+        }
+
+        header h1 a {
+            display: block;
+            width: 140px;
+            font-family: Newsreader;
+        }
+
+        /* Add bottom spacing to the content */
+        .content-wrapper {
+            padding-bottom: 6rem;
+        }
+
+        /* Ensure the last paragraph has margin too */
+        .content-container p:last-child {
+            margin-bottom: 6rem;
+        }
+    </style>
+
+    <!-- Preloading fonts (optional) -->
+    <link rel="preload" href="fonts/Newsreader.woff2" as="font" type="font/woff2" crossorigin/>
+    <link rel="preload" href="fonts/Newsreader-italic.woff2" as="font" type="font/woff2" crossorigin/>
+
+    <!-- Main styles -->
+    <link rel="stylesheet" href="styles.css"/>
+
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+    <link rel="alternate icon" type="image/png" href="favicon-32x32.png"/>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+
+    <!-- Dark Mode Script -->
+    <script>
+        (function() {
+            try {
+                const root = document.documentElement;
+                const classes = ["preload"];
+
+                if (localStorage.getItem("darkMode") === "enabled") {
+                    classes.push("dark-mode");
+                    root.style.setProperty("--bg-color", "#141413");
+                    root.style.setProperty("--text-color", "#f0efea");
+                }
+
+                root.classList.add(...classes);
+
+                queueMicrotask(() => {
+                    root.classList.add("js-loaded");
+                });
+            } catch (e) {
+                document.documentElement.classList.add("preload", "js-loaded");
+            }
+        })();
+    </script>
+
+    <!-- Additional Scripts -->
+    <script src="darkmode.js" defer></script>
+    <script src="footnotes.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div>
+            <h1>
+                <a href="./">Parker Beard</a>
+            </h1>
+            <div class="header-controls">
+                <div class="toggle-switch">
+                    <input type="checkbox" id="darkModeToggle" class="toggle-input"/>
+                    <label for="darkModeToggle" class="toggle-label">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        <article class="content-container">
+            <h1>Patriotic for What?</h1>
+            <h4>On the American Spirit</h4>
+            <p class="author-date">
+                <time datetime="2025-07-04">4 July 2025</time>
+            </p>
+            
+            <p>
+                I was raised to love God, my family, and my country—and to understand sacrifice. My great-great-great-great-great-great-grandfather crossed the Atlantic by boat to receive a bayonet scar from fighting the Redcoats. My great-great-grandfather would return to the motherland to fight tooth and nail in the trenches of WWI, bringing home with him the shadow of death. One of his sons continued his legacy in WWII, never returning, dying as a boy under the French skies in a shallow grave. The men in my patriarchal line didn’t live, fight, and die for an abstraction of universal ideals, but rather for their families, for their kin, for their God-given right to dominion. To tell them that America is an “idea” would be absurd. They clearly understood what has been forgotten: nations belong to those who bleed for them, that civilization is built by those who plant trees knowing they’ll never see its shade, that every abstract “freedom” was purchased at a price we can barely comprehend. America is not an idea, but rather a conquest—passed down as a birthright, meant to be held tightly in hand and close to the heart.
+            </p>
+            <p>
+                Yet today, I stand in front of the flag they revered and wonder bitterly: Patriotic for what?
+            </p>
+            <p>
+                To me, the American spirit is my inheritance. I have watched the foundation of our country be sold cheaply by traitors who perform patriotism—each one a modern Esau who would trade the inheritance of sacred sovereignty for a drop of thin stew. America’s leadership has pulled its birthright from under our feet, reassuring us that we voted for it. The country that generations of frontier-spirited Americans fought to secure has been sold for parts to the highest bidder or given as charity to eager beggars. Dominion is God’s most trusting gift to man—given to those brave enough to claim it, fierce enough to defend it, and faithful enough to preserve it. Our fathers gave generously to their churches, built communities, and raised families. They understood mercy, but never mistook charity for surrender. They prayed on bent knees but kept the powder dry. Today, America kneels not before God, but before strangers who resent its strength and scorn its weakness. When a people freely surrender their gates to those who arrive holding new blueprints, they offer not benevolence but an open door to their own destruction. But America, that creature of Will without History, assumed its spirit was universal rather than inherent. It could not conceive that men would cross oceans not to build but to receive, not to embrace the American spirit but attempt to replace it with their own while harvesting American plenty. Our nation developed a moral vanity that blinded it from this truth, forcing its people to surrender their sovereignty as if it were virtue. As a reward, our fathers’ courage and pride have been recast as original sin, their strength taught as oppression, their victories requiring endless apologetic acknowledgment. The real tragedy is not the inversion of this truth, but that those responsible for restoring it insist on fighting by the rules their enemies threw out long ago.
+            </p>
+            <p>
+                Today’s conservatives are closer in spirit to the redcoats than the patriots they imagine themselves to be. They line up in perfect formation, muskets raised and polished, adorned in brass buttons, marching to a foreboding drumbeat across an open field. They hold their chins high as rifle fire tears through their ranks from the treeline. “Cowards!” they shout, blood pooling in their mouths. “Fight us like gentlemen!” Another rain of bullets drops a dozen more. Still, they continue to march, still they maintain formation, still they accuse the enemy of disregarding the rules of engagement. The conservatives are the British at Lexington, dying beautifully while the patriots fight ugly and win. There is a key distinction: the Patriots fought the British to claim what they saw as their God given right—dominion over the land they would carve from wilderness, sovereignty to build the nation their kin deserved. Today’s treeline shooters, however, measure victory only in what falls. The conservatives wave their constitutions and wag their fingers at those who’ve already burned the paper. “At least we have principles!” the conservatives shout as another institution falls, another school corrupts their children, another church conforms to the patterns of the worldly. They would rather lose with honor than win with dirt under their fingernails, too high on their horse to grasp that the only honor in war is victory. To those who refuse to fight for the future, remember this: your children will not thank you for your graceful defeat.
+            </p>
+            <p>
+                To their credit, at least the redcoats faced enemy fire. The “moderate” conservative prefers to dine with the enemy, imagining that reasoned conversation might change them. The delusional moderate draws his lines in the sand at low tide, always shocked when the water rises. “Just don’t force it on my kids!” he shrieks in his final stand. You cannot negotiate with degeneracy, as there are no favorable terms. He fails to see that by allowing the premise of “acceptable” civilizational poison, he has already lost. The greatest delusion of the moderate is believing those who seek to destroy his truth and faith will somehow honor his compromises. Coming home to a house fire, he debates whether to save the kitchen or the bedroom as the enemy douses the family room in gasoline. The moderate is a summer soldier, saluting America only when socially acceptable, bending the knee at any pushback. They are useless. They conserve <i>nothing</i>, observing the destruction of our standards from afar, congratulating themselves on their reasonableness. In their hearts, they know the truth, but to acknowledge it would necessitate action, and action would pop their carefully crafted bubble.
+            </p>
+            <p>
+                The modern Christian is similar to the moderate conservative. They have abdicated all responsibility to the abstract “Holy Spirit” so that they may never callous their hands. “If God wills it,” they say. But how? Are we not the hands and feet of the Spirit? What is the point at which the modern Christian decides that enough is enough? Is it when our cities are destroyed by a fiery rain of sulfur? It makes me question what such a Christian <i>actually</i> believes. They refuse to acknowledge man as the lightning rod conducting heaven’s fire through mortal flesh. They want spirit without body, heaven without earth, and glory without blood. But we are not angels, nor were we meant to be. We are made in God’s image, caught between beast and angel, not as punishment but as divine purpose. The tension IS the calling. The body IS the altar. And they have let the fire smolder.
+            </p>
+            <p>
+                To those who are still with me, listen closely: you have enemies, and they are legion. Like a serpent in tall grass, they wait patiently for your child to play barefoot, for your wife to look the other way, for your attention to drift. When they strike, it is with deadly intention. And as you gasp, while poison surges through your veins, the snake makes you apologize for having legs, for walking above its dominion. As you lie forever at rest, the snake slithers back, relentlessly pursuing the goal of a world where all must crawl through the mud on their stomach. In its world, the very memory of walking becomes a sin.
+            </p>
+            <p>
+                It’s no wonder the serpents are gaining ground—the shepherds have joined them. Today’s false prophets teach the strong to apologize for their strength, for builders to be ashamed of their creations, and for protectors to lay down their swords. The world tells the susceptible Christian what love means, and they obey. The culture defines their Christ, and they bow. They are seculars in the shell of a believer, creating a monstrous “empathy” that enables the corruption of souls. True love saves the victim before they fall to their death; secular love looks over the edge with one eye closed. They turn around and call it “hate” when we fight for their souls. What they preach is not the Gospel but its antithesis: Christ demanded we be as wise as serpents, not food for them. The same mouth that spoke of love for our neighbors promised that those who cause little ones to sin will be “drowned in the depths of the sea.” The church has abandoned truth and called it grace, not acknowledging that Christ came with both, inseparable. Their Judas-kiss theology commands us to betray our brothers and sisters with a smile, to sacrifice their innocence on the altar of inclusion, to call civilizational suicide an act of Christian charity. To destroy Christianity in America is to destroy America itself. We are not a secular nation with religious citizens—we are a covenant written by Protestant blood. The temple needs clearing again.
+            </p>
+            <p>
+                Nietzsche diagnosed the conservative disease precisely: they are always <i>reacting</i>, never creating. In <i>Twilight of the Idols</i>, he exposed their delusion that one can revive the past through sheer will and determination. “A reversion, a return in any sense or degree is simply not possible,” he wrote. The conservative equates healing to embalming, imagining preservation to be the same as life. He always arrives too late, after the organism is dying, and his medicine barely masks the smell of rotting flesh. “Make America Great Again” is seen as a battle cry that <i>should</i> drive men to create, but rather manifests to a conservative as a somber admission—they can only react to what their enemies have already done. They tire themselves trying to stop time’s wheel, waiting for progressives to set the bar. They define themselves purely through negation: not-woke, not-socialist, not-degenerate, never declaring what they <i>are</i>, never proposing any coherent vision for the future. They survive as curators in a burning museum. Nietzsche’s cruelest insight on the subject was this: the conservative is not quite the opposite of the progressive, but rather his shadow. He is forever chasing, forever one step behind. The past can hold material for inspiration, not grand targets to shoot for. Our fathers built forward and upward—these men dream backward, and marvel as the roof caves in.
+            </p>
+            <p>
+                Patriotic for what?
+            </p>
+            <p>
+                I am patriotic for the nation my ancestors paid for with blood. But more than that, I am patriotic for the America that must reclaim what cowards surrendered. For the civilization my brothers and our sons will build on the foundation their fathers laid, using tools the forefathers could never have imagined. For an America that dares to harness the Faustian spirit until we arrive beyond. For a nation that builds towers to heaven, not in defiance of God but in partnership with Him. Most of all, a nation that remembers that strength is the prerequisite for mercy, that dominion is not promised but fought for, and that our destiny lies in seizing the future with both hands. We <i>will</i> create an America that our enemies fear and our grandchildren deserve. We are not going back. We are going through.
+            </p>
+            <p>
+                Today, I claim again our Manifest Destiny. From sea to shining sea was never enough. We Americans are descendants of a people that refused limits, that crossed the ocean and forged through wilderness, that reached toward the stars because the earth was too small. A reborn America is coming, inevitable as the sun and bright as noon. An America that makes Hell tremble while Heaven rejoices. Where victory is so complete, the world itself becomes a living monument.
+            </p>
+            <p>
+                Godspeed
+            </p>
+            
+        </article>
+    </main>
+</body>
+</html>
