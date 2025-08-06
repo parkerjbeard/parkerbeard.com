@@ -3,19 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Essay Formatter - Google Docs to HTML</title>
+    <title>Essay Formatter - Parker Beard</title>
     <style>
         :root {
             --bg-color: #f0efea;
             --text-color: #141413;
-            --primary-color: #4a5568;
-            --border-color: #cbd5e0;
+            --primary-color: #141413;
+            --border-color: #e6e4dd;
             --success-color: #48bb78;
             --error-color: #e53e3e;
+            --font-family: 'Newsreader', serif;
+        }
+
+        .dark-mode {
+            --bg-color: #141413;
+            --text-color: #f0efea;
+            --border-color: #333;
         }
 
         body {
-            font-family: system-ui, -apple-system, sans-serif;
+            font-family: var(--font-family);
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--bg-color);
@@ -69,17 +76,20 @@
         }
 
         button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
+            background-color: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--text-color);
             padding: 10px 15px;
             border-radius: 4px;
             cursor: pointer;
             font-size: 1em;
+            font-family: var(--font-family);
+            transition: all 0.3s;
         }
 
         button:hover {
-            opacity: 0.9;
+            background-color: var(--text-color);
+            color: var(--bg-color);
         }
 
         .output {
@@ -95,10 +105,96 @@
         .preview {
             border: 1px solid var(--border-color);
             border-radius: 4px;
-            padding: 10px 20px;
+            padding: 40px;
             min-height: 300px;
-            background-color: white;
+            background-color: var(--bg-color);
             overflow: auto;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Preview styles to match actual site */
+        .preview h1 {
+            font-size: 2.25rem;
+            line-height: 1.2;
+            margin: 2rem 0 1rem;
+            font-weight: 500;
+        }
+        
+        .preview h2 {
+            font-size: 1.875rem;
+            margin: 2.5rem 0 1rem;
+            font-weight: 500;
+        }
+        
+        .preview h3 {
+            font-size: 1.5rem;
+            margin: 2rem 0 0.75rem;
+            font-weight: 500;
+        }
+        
+        .preview h4 {
+            font-size: 1.125rem;
+            margin: 1.5rem 0 0.5rem;
+            font-weight: 500;
+            opacity: 0.8;
+        }
+        
+        .preview p {
+            margin: 1.25rem 0;
+            line-height: 1.75;
+        }
+        
+        .preview .author-date {
+            font-size: 0.95rem;
+            opacity: 0.7;
+            margin: 1rem 0 2rem;
+        }
+        
+        .preview .read-time {
+            margin-left: 0.5rem;
+        }
+        
+        .preview .read-time:before {
+            content: "· ";
+        }
+        
+        .preview a {
+            color: var(--text-color);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1px;
+            transition: border-color 0.3s;
+        }
+        
+        .preview a:hover {
+            border-color: var(--text-color);
+        }
+        
+        .preview .footnote-ref {
+            border: none;
+            font-size: 0.85em;
+        }
+        
+        .preview .footnotes {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+        
+        .preview .footnotes ol {
+            padding-left: 1.5rem;
+        }
+        
+        .preview .footnotes li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .preview .footnote-backref {
+            margin-left: 0.5rem;
+            font-size: 0.9em;
+            border: none;
         }
 
         .controls {
@@ -160,11 +256,63 @@
         .tab-content.active {
             display: block;
         }
+        
+        .output-section {
+            grid-column: 1 / -1;
+            margin-top: 20px;
+        }
+        
+        .output-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .view-toggle {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .view-btn {
+            padding: 5px 15px;
+            font-size: 0.9em;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .view-btn.active {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            border-color: var(--text-color);
+        }
+        
+        .view-btn:hover:not(.active) {
+            border-color: var(--text-color);
+        }
+        
+        .output-container {
+            position: relative;
+            min-height: 400px;
+        }
+        
+        .output-container .output,
+        .output-container .preview {
+            display: none;
+        }
+        
+        .output-container .output.active,
+        .output-container .preview.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Essay Formatter - Google Docs to HTML</h1>
+        <h1>Essay Formatter</h1>
 
         <div class="tabs">
             <div class="tab active" data-tab="convert">Convert Essay</div>
@@ -184,6 +332,11 @@
             </div>
 
             <div class="form-group">
+                <label for="essayExcerpt">Essay Excerpt (for homepage):</label>
+                <input type="text" id="essayExcerpt" placeholder="A brief description for the homepage listing">
+            </div>
+
+            <div class="form-group">
                 <label for="essayDate">Publication Date:</label>
                 <input type="date" id="essayDate">
             </div>
@@ -191,6 +344,11 @@
             <div class="form-group">
                 <label for="essaySlug">URL Slug:</label>
                 <input type="text" id="essaySlug" placeholder="essay-url-slug (e.g., my-essay-title)">
+            </div>
+
+            <div class="form-group">
+                <label for="essayKeywords">SEO Keywords (comma-separated):</label>
+                <input type="text" id="essayKeywords" placeholder="america, freedom, philosophy, etc.">
             </div>
 
             <div class="form-group">
@@ -207,22 +365,33 @@
 
             <div id="message" class="message"></div>
 
-            <h2>HTML Output:</h2>
-            <div class="output" id="htmlOutput"></div>
-
-            <h2>Preview:</h2>
-            <div class="preview" id="previewOutput"></div>
+            <div class="output-section">
+                <div class="output-header">
+                    <h2>Output</h2>
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="html">HTML</button>
+                        <button class="view-btn" data-view="preview">Preview</button>
+                    </div>
+                </div>
+                <div class="output-container">
+                    <div class="output active" id="htmlOutput"></div>
+                    <div class="preview" id="previewOutput"></div>
+                </div>
+            </div>
         </div>
 
         <div class="tab-content" id="template-tab">
             <div class="template-info">
                 <h2>About the Template</h2>
-                <p>This tool helps you format your Google Docs essays into HTML that matches your website template. The generated HTML will include:</p>
+                <p>This tool helps you format your essays into HTML that matches your website template. The generated HTML will include:</p>
                 <ul>
                     <li>Properly formatted paragraphs</li>
                     <li>Title and subtitle</li>
-                    <li>Publication date</li>
+                    <li>Publication date with automatic reading time</li>
                     <li>Basic formatting (italics, bold)</li>
+                    <li>Footnotes support (use [^1] in text and [^1]: for footnote content)</li>
+                    <li>SEO meta tags and Open Graph tags</li>
+                    <li>Automatic dark mode support</li>
                 </ul>
                 <p>You can use this tool in two ways:</p>
                 <ol>
@@ -276,8 +445,18 @@
                 <ul>
                     <li><code>*text*</code> or <code>_text_</code> - Makes text <i>italic</i></li>
                     <li><code>**text**</code> or <code>__text__</code> - Makes text <strong>bold</strong></li>
+                    <li><code>[^1]</code> - Creates a footnote reference</li>
+                    <li><code>[^1]: Footnote text</code> - Defines the footnote content (place at end of essay)</li>
                 </ul>
                 <p>For example: "This is <code>*italic*</code> and this is <code>**bold**</code>" becomes "This is <i>italic</i> and this is <strong>bold</strong>"</p>
+                
+                <h3>Footnotes</h3>
+                <p>To add footnotes:</p>
+                <ol>
+                    <li>Add <code>[^1]</code> in your text where you want the footnote reference</li>
+                    <li>At the end of your essay, add <code>[^1]: Your footnote text here</code></li>
+                    <li>Number footnotes sequentially: [^1], [^2], [^3], etc.</li>
+                </ol>
             </div>
         </div>
     </div>
@@ -307,6 +486,22 @@
             const formattedDate = today.toISOString().substring(0, 10);
             document.getElementById('essayDate').value = formattedDate;
 
+            // Auto-generate slug from title
+            const titleInput = document.getElementById('essayTitle');
+            const slugInput = document.getElementById('essaySlug');
+            
+            titleInput.addEventListener('input', function() {
+                // Only auto-generate if slug is empty or matches previous auto-generated slug
+                const currentSlug = slugInput.value;
+                const autoSlug = generateSlug(this.value);
+                
+                if (!currentSlug || currentSlug === generateSlug(titleInput.dataset.previousTitle || '')) {
+                    slugInput.value = autoSlug;
+                }
+                
+                titleInput.dataset.previousTitle = this.value;
+            });
+
             // Format button click handler
             document.getElementById('formatButton').addEventListener('click', formatEssay);
             
@@ -318,7 +513,41 @@
             
             // Generate Full HTML button click handler
             document.getElementById('generateFullHTML').addEventListener('click', generateFullHTML);
+            
+            // View toggle functionality
+            const viewButtons = document.querySelectorAll('.view-btn');
+            const htmlOutput = document.getElementById('htmlOutput');
+            const previewOutput = document.getElementById('previewOutput');
+            
+            viewButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Update active button
+                    viewButtons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show appropriate view
+                    const view = this.getAttribute('data-view');
+                    if (view === 'html') {
+                        htmlOutput.classList.add('active');
+                        previewOutput.classList.remove('active');
+                    } else {
+                        htmlOutput.classList.remove('active');
+                        previewOutput.classList.add('active');
+                    }
+                });
+            });
         });
+
+        function generateSlug(text) {
+            return text
+                .toLowerCase()
+                .trim()
+                .replace(/[^\w\s-]/g, '') // Remove special characters
+                .replace(/\s+/g, '-')      // Replace spaces with hyphens
+                .replace(/-+/g, '-')       // Replace multiple hyphens with single hyphen
+                .replace(/^-+/, '')        // Remove leading hyphens
+                .replace(/-+$/, '');       // Remove trailing hyphens
+        }
 
         function formatEssay() {
             const title = document.getElementById('essayTitle').value.trim();
@@ -340,8 +569,34 @@
             const date = new Date(dateInput);
             const formattedDate = formatDate(date);
             
+            // Separate footnote definitions from main content
+            const lines = content.split('\n');
+            const mainContent = [];
+            const footnotes = {};
+            let isFootnoteSection = false;
+            
+            for (const line of lines) {
+                // Check if this is a footnote definition
+                const footnoteDefMatch = line.match(/^\[\^(\d+)\]:\s*(.+)$/);
+                
+                if (footnoteDefMatch) {
+                    isFootnoteSection = true;
+                    const footnoteNum = footnoteDefMatch[1];
+                    const footnoteText = footnoteDefMatch[2];
+                    footnotes[footnoteNum] = footnoteText;
+                } else if (line.trim() !== '' && !isFootnoteSection) {
+                    mainContent.push(line);
+                } else if (line.trim() !== '' && isFootnoteSection) {
+                    // This is continuation of a footnote
+                    const lastFootnoteNum = Object.keys(footnotes).pop();
+                    if (lastFootnoteNum) {
+                        footnotes[lastFootnoteNum] += ' ' + line.trim();
+                    }
+                }
+            }
+            
             // Process content - split into paragraphs and format
-            const paragraphs = content.split(/\n+/).filter(p => p.trim() !== '');
+            const paragraphs = mainContent.join('\n').split(/\n+/).filter(p => p.trim() !== '');
             
             // Generate HTML
             let htmlOutput = `<h1>${escapeHTML(title)}</h1>\n`;
@@ -350,7 +605,7 @@
                 htmlOutput += `<h4>${escapeHTML(subtitle)}</h4>\n`;
             }
             
-            htmlOutput += `<p class="author-date">\n    <time datetime="${dateInput}">${formattedDate}</time>\n</p>\n\n`;
+            htmlOutput += `<p class="author-date">\n    <time datetime="${dateInput}">${formattedDate}</time>\n    <span class="read-time"></span>\n</p>\n\n`;
             
             // Add paragraphs
             paragraphs.forEach(paragraph => {
@@ -363,28 +618,54 @@
                     // It's a heading - determine the level (h2, h3, etc.)
                     const headerLevel = headerMatch[1].length;
                     const headerText = headerMatch[2].trim();
-                    htmlOutput += `<h${headerLevel}>${formatParagraphContent(headerText)}</h${headerLevel}>\n`;
+                    htmlOutput += `<h${headerLevel}>${formatParagraphContent(headerText, footnotes)}</h${headerLevel}>\n`;
                 } else {
                     // Regular paragraph
-                    const formattedParagraph = formatParagraphContent(trimmedParagraph);
+                    const formattedParagraph = formatParagraphContent(trimmedParagraph, footnotes);
                     htmlOutput += `<p>\n    ${formattedParagraph}\n</p>\n`;
                 }
             });
             
-            // Display HTML
-            document.getElementById('htmlOutput').textContent = htmlOutput;
+            // Add footnotes section if there are any
+            if (Object.keys(footnotes).length > 0) {
+                htmlOutput += '\n<div class="footnotes">\n    <ol>\n';
+                for (const [num, text] of Object.entries(footnotes)) {
+                    htmlOutput += `        <li id="fn-${num}">\n            ${escapeHTML(text)} <a href="#fnref-${num}" class="footnote-backref">↩</a>\n        </li>\n`;
+                }
+                htmlOutput += '    </ol>\n</div>\n';
+            }
             
-            // Show preview
-            document.getElementById('previewOutput').innerHTML = htmlOutput;
+            // Display HTML
+            const htmlOutputEl = document.getElementById('htmlOutput');
+            const previewOutputEl = document.getElementById('previewOutput');
+            
+            htmlOutputEl.textContent = htmlOutput;
+            previewOutputEl.innerHTML = htmlOutput;
+            
+            // Calculate and show reading time in preview
+            const wordCount = content.trim().split(/\s+/).filter(word => word.length > 0).length;
+            const readingTime = Math.ceil(wordCount / 225);
+            const readTimeEl = previewOutputEl.querySelector('.read-time');
+            if (readTimeEl) {
+                readTimeEl.textContent = `${readingTime} min read`;
+            }
             
             showMessage('HTML formatted successfully!', 'success');
         }
 
-        function formatParagraphContent(paragraph) {
+        function formatParagraphContent(paragraph, footnotes) {
             // Handle basic formatting
             
             // First, escape any HTML to prevent injection
             let formatted = escapeHTML(paragraph);
+            
+            // Convert footnote references [^1] to superscript links
+            formatted = formatted.replace(/\[\^(\d+)\]/g, function(match, num) {
+                if (footnotes && footnotes[num]) {
+                    return `<sup><a href="#fn-${num}" id="fnref-${num}" class="footnote-ref">${num}</a></sup>`;
+                }
+                return match;
+            });
             
             // Convert **text** to <strong>text</strong> (double asterisks for bold) - Non-greedy
             formatted = formatted.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
@@ -464,6 +745,8 @@
         function generateFullHTML() {
             const title = document.getElementById('essayTitle').value.trim();
             const subtitle = document.getElementById('essaySubtitle').value.trim();
+            const excerpt = document.getElementById('essayExcerpt').value.trim();
+            const keywords = document.getElementById('essayKeywords').value.trim();
             const slug = document.getElementById('essaySlug').value.trim() || title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
             const dateInput = document.getElementById('essayDate').value;
             
@@ -474,6 +757,11 @@
             
             if (!subtitle) {
                 showMessage('Please enter an essay subtitle', 'error');
+                return;
+            }
+            
+            if (!excerpt) {
+                showMessage('Please enter an excerpt for the homepage', 'error');
                 return;
             }
             
@@ -503,10 +791,33 @@
                     fullHTML = fullHTML.replace(new RegExp("<!-- ESSAY_SLUG -->", "g"), slug);
                     fullHTML = fullHTML.replace(new RegExp("<!-- ESSAY_CONTENT -->", "g"), contentHTML);
                     
+                    // Add meta description using excerpt
+                    const metaDescription = `<meta name="description" content="${escapeHTML(excerpt)}" />`;
+                    fullHTML = fullHTML.replace('</title>', `</title>\n    ${metaDescription}`);
+                    
+                    // Add keywords if provided
+                    if (keywords) {
+                        const metaKeywords = `<meta name="keywords" content="${escapeHTML(keywords)}" />`;
+                        fullHTML = fullHTML.replace('</title>', `</title>\n    ${metaKeywords}`);
+                    }
+                    
                     // Display the full HTML
                     document.getElementById('htmlOutput').textContent = fullHTML;
                     
-                    showMessage('Full HTML page generated successfully!', 'success');
+                    // Also provide index.html entry
+                    const date = new Date(dateInput);
+                    const formattedDate = formatDate(date);
+                    const indexEntry = `
+                        <div class="essay-item">
+                            <div class="essay-title">
+                                <a href="${slug}.html">${escapeHTML(title)}</a>
+                            </div>
+                            <span class="essay-date">${formattedDate} · [READING TIME] min read</span>
+                            <p class="essay-excerpt">${escapeHTML(excerpt)}</p>
+                        </div>`;
+                    
+                    showMessage('Full HTML page generated successfully! Index entry copied below.', 'success');
+                    console.log('Add this to your index.html:', indexEntry);
                 })
                 .catch(error => {
                     showMessage(error.message, 'error');

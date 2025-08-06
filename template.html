@@ -1,24 +1,47 @@
 <!doctype html>
+<!-- ============================================
+     ESSAY TEMPLATE - PARKER BEARD
+     
+     Quick Reference - Replace these placeholders:
+     - ESSAY_TITLE: The full essay title
+     - ESSAY_EXCERPT: Brief description for homepage/SEO (1-2 sentences)
+     - ESSAY_SLUG: URL-friendly version (e.g., "my-essay-title")
+     - ESSAY_KEYWORDS: Comma-separated keywords for SEO
+     - ESSAY_CONTENT: The full HTML content of your essay
+     
+     Use essay-formatter.html to generate content automatically
+     ============================================ -->
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <!-- Page Title -->
-    <title><!-- ESSAY_TITLE --></title>
+    <!-- ============================================
+         ESSAY METADATA - REPLACE THESE VALUES
+         ============================================ -->
+    
+    <!-- Page Title (appears in browser tab) -->
+    <title><!-- ESSAY_TITLE --> - Parker Beard</title>
 
-    <!-- Open Graph Meta -->
+    <!-- SEO Meta Tags -->
+    <meta name="author" content="Parker Beard"/>
+    <meta name="description" content="<!-- ESSAY_EXCERPT -->"/>
+    <meta name="keywords" content="<!-- ESSAY_KEYWORDS --> <!-- e.g: america, philosophy, freedom -->"/>
+    
+    <!-- Open Graph Meta (for social media sharing) -->
     <meta property="og:title" content="<!-- ESSAY_TITLE -->"/>
-    <meta property="og:description" content="<!-- ESSAY_SUBTITLE -->"/>
-    <meta property="og:url" content="https://parkerbeard.com/<!-- ESSAY_SLUG -->"/>
+    <meta property="og:description" content="<!-- ESSAY_EXCERPT -->"/>
+    <meta property="og:url" content="https://parkerbeard.com/<!-- ESSAY_SLUG -->.html"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:site_name" content="Parker Beard"/>
+    
+    <!-- Note: Create an image at images/[essay-slug]-card.png for social sharing -->
     <meta property="og:image" content="https://parkerbeard.com/images/<!-- ESSAY_SLUG -->-card.png"/>
 
     <!-- Twitter Card Meta -->
     <meta name="twitter:card" content="summary_large_image"/>
-
-    <!-- Author & Description -->
-    <meta name="author" content="Parker Beard"/>
-    <meta name="description" content="<!-- ESSAY_SUBTITLE -->"/>
+    <meta name="twitter:title" content="<!-- ESSAY_TITLE -->"/>
+    <meta name="twitter:description" content="<!-- ESSAY_EXCERPT -->"/>
 
     <!-- Inline Style/Fonts -->
     <style>
@@ -108,8 +131,50 @@
 
     <main class="content-wrapper">
         <article class="content-container">
+            <!-- ============================================
+                 ESSAY CONTENT GOES HERE
+                 ============================================
+                 
+                 Replace this section with your essay HTML.
+                 
+                 Basic structure:
+                 <h1>Essay Title</h1>
+                 <h4>Optional Subtitle</h4>
+                 <p class="author-date">
+                     <time datetime="YYYY-MM-DD">Day Month Year</time>
+                     <span class="read-time"></span>
+                 </p>
+                 
+                 <p>Your essay paragraphs...</p>
+                 
+                 For sections use:
+                 <h2>Section Title</h2>
+                 <h3>Subsection Title</h3>
+                 
+                 For footnotes:
+                 Text with footnote<sup><a href="#fn-1" id="fnref-1" class="footnote-ref">1</a></sup>
+                 
+                 At the end add:
+                 <div class="footnotes">
+                     <ol>
+                         <li id="fn-1">
+                             Footnote text <a href="#fnref-1" class="footnote-backref">↩</a>
+                         </li>
+                     </ol>
+                 </div>
+                 ============================================ -->
+            
             <!-- ESSAY_CONTENT -->
         </article>
     </main>
+    
+    <!-- ============================================
+         DON'T FORGET TO:
+         1. Add this essay to index.html
+         2. Update sitemap.xml
+         3. Create social share image at images/[essay-slug]-card.png
+         4. Test dark mode toggle
+         5. Verify reading time is calculated correctly
+         ============================================ -->
 </body>
 </html> 
