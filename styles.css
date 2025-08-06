@@ -339,6 +339,13 @@ center {
   line-height: 1.4;
 }
 
+.read-time {
+  font-weight: 400;
+  font-size: 0.9em;
+  color: #767676;
+  font-style: italic;
+}
+
 .mobile-toc-link,
 .toc-container h2 {
   font-size: 1.2em;
