@@ -30,6 +30,7 @@
     <meta name="robots" content="index, follow" />
     <meta name="language" content="English" />
     <link rel="canonical" href="https://parkerbeard.com/" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -224,6 +225,21 @@
             padding-bottom: var(--spacing-sm);
             border-bottom: 1px solid var(--border-color);
         }
+        
+        .essays-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .essays-header h2 {
+            margin: 0;
+            border: none;
+            padding: 0;
+        }
 
         .about-section {
             font-size: 0.95rem;
@@ -278,6 +294,26 @@
             font-size: 0.95rem;
         }
 
+        .random-essay-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-color);
+            padding: 4px 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+            opacity: 0.6;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .random-essay-btn:hover {
+            opacity: 1;
+            border-color: var(--text-color);
+        }
+
         @media (max-width: 768px) {
             .layout {
                 grid-template-columns: 1fr;
@@ -329,6 +365,7 @@
     </script>
 
     <script src="https://cdn.usefathom.com/script.js" data-site="VDZFYXIJ" defer></script>
+    <script src="calculate-reading-times.js" defer></script>
 </head>
 
 <body>
@@ -348,14 +385,17 @@
         <main>
             <div class="layout">
                 <section class="essays-section">
-                    <h2>Essays</h2>
+                    <div class="essays-header">
+                        <h2>Essays</h2>
+                        <button id="randomEssayBtn" class="random-essay-btn" title="Random Essay">⚄</button>
+                    </div>
                     <div class="essays-list">
                         <div class="essay-item">
                             <div class="essay-title">
                                 <a href="patriotic-for-what.html">Patriotic for What?</a>
                                 <span class="latest-tag">Latest</span>
                             </div>
-                            <span class="essay-date">4 July 2025</span>
+                            <span class="essay-date">4 July 2025 · 8 min read</span>
                             <p class="essay-excerpt">A reflection on the American spirit.</p>
                         </div>
                         
@@ -363,7 +403,7 @@
                             <div class="essay-title">
                                 <a href="the-death-of-beauty.html">The Death of Beauty</a>
                             </div>
-                            <span class="essay-date">18 April 2025</span>
+                            <span class="essay-date">18 April 2025 · 6 min read</span>
                             <p class="essay-excerpt">A civilization's surrender to sanctioned decay.</p>
                         </div>
                         
@@ -371,7 +411,7 @@
                             <div class="essay-title">
                                 <a href="the-last-warden.html">The Last Warden</a>
                             </div>
-                            <span class="essay-date">7 April 2025</span>
+                            <span class="essay-date">7 April 2025 · 5 min read</span>
                             <p class="essay-excerpt">When the forest falls and towers rise, the roots remain.</p>
                         </div>
                         
@@ -379,7 +419,7 @@
                             <div class="essay-title">
                                 <a href="before-the-cage.html">Before the Cage</a>
                             </div>
-                            <span class="essay-date">1 April 2025</span>
+                            <span class="essay-date">1 April 2025 · 7 min read</span>
                             <p class="essay-excerpt">Reclaiming the wild spirit from a world of comfortable submission.</p>
                         </div>
                         
@@ -387,7 +427,7 @@
                             <div class="essay-title">
                                 <a href="the-nightmares-i-carry.html">The Nightmares I Carry</a>
                             </div>
-                            <span class="essay-date">24 February 2025</span>
+                            <span class="essay-date">24 February 2025 · 4 min read</span>
                             <p class="essay-excerpt">Nightly reminders that inaction costs everything.</p>
                         </div>
                         
@@ -395,7 +435,7 @@
                             <div class="essay-title">
                                 <a href="the-censorship-paradox.html">The Censorship Paradox</a>
                             </div>
-                            <span class="essay-date">17 February 2025</span>
+                            <span class="essay-date">17 February 2025 · 5 min read</span>
                             <p class="essay-excerpt">Truth silenced only grows stronger underground.</p>
                         </div>
                         
@@ -403,7 +443,7 @@
                             <div class="essay-title">
                                 <a href="against-the-university.html">Against the University</a>
                             </div>
-                            <span class="essay-date">3 February 2025</span>
+                            <span class="essay-date">3 February 2025 · 6 min read</span>
                             <p class="essay-excerpt">Modern academia's fatal exchange: excellence for credentials.</p>
                         </div>
                         
@@ -411,7 +451,7 @@
                             <div class="essay-title">
                                 <a href="beyond-frontiers.html">Beyond Frontiers</a>
                             </div>
-                            <span class="essay-date">9 November 2024</span>
+                            <span class="essay-date">9 November 2024 · 9 min read</span>
                             <p class="essay-excerpt">From Alaskan glaciers to code—my quest for creation as divine reverence.</p>
                         </div>
                     </div>
@@ -421,9 +461,9 @@
                     <section class="about-section">
                         <h3>About</h3>
                         <p>
-                            Parker Beard writes essays against the illusions of the modern world, exploring what it means to live courageously, build meaningfully, and reclaim humanity's highest purpose.
+                            Parker Beard writes essays against the illusions of the modern world, exploring what it means to live courageously, build meaningfully, and resurrect the untamed spirit of American greatness.
                         </p>
-                        <p>He is currently studying philosophy at Pepperdine University.</p>
+                        <p>He is current working at Rainmaker as a Forward Deployed Engineer. All opinions are his own.</p>
                         <p id="age-counter" class="age-counter"></p>
                     </section>
 
@@ -528,6 +568,25 @@
             // Update frequently
             updateAge();
             setInterval(updateAge, 50);
+        });
+
+        // Random Essay Button
+        document.addEventListener('DOMContentLoaded', function() {
+            const essays = [
+                'patriotic-for-what.html',
+                'the-death-of-beauty.html',
+                'the-last-warden.html',
+                'before-the-cage.html',
+                'the-nightmares-i-carry.html',
+                'the-censorship-paradox.html',
+                'against-the-university.html',
+                'beyond-frontiers.html'
+            ];
+
+            document.getElementById('randomEssayBtn').addEventListener('click', function() {
+                const randomIndex = Math.floor(Math.random() * essays.length);
+                window.location.href = essays[randomIndex];
+            });
         });
     </script>
 </body>

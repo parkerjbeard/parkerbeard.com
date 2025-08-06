@@ -1,23 +1,16 @@
 # Personal Website
 
-A clone of [Dario Amodei's personal website](https://darioamodei.com/), built with vanilla JavaScript and CSS. The site emphasizes readability, accessibility, and minimalist design.
+A personal essay website built on the foundation of [Dario Amodei's website](https://darioamodei.com/), with additional features and customizations. Emphasizes readability, minimalist design, and zero dependencies.
 
 ## Features
 
 - Dark mode with system preference detection and persistence
 - Auto-generating table of contents with scroll tracking
 - Smart footnotes system with hover previews
+- Dynamic reading time calculation for all essays
+- Random essay selector
+- Live age counter with precision display
 - Responsive design for all devices
-- Dark/light mode color scheme with smooth transitions
-- Newsletter subscription form
 - Print-friendly styling
-- Accessibility focused
-- Zero dependencies
+- Zero dependencies - pure HTML, CSS, and vanilla JavaScript
 
-## Technical Details
-
-- HTML5
-- CSS3 (Custom Properties, Grid, Flexbox)
-- Vanilla JavaScript (ES6+)
-
-## Project Structure
