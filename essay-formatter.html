@@ -360,7 +360,7 @@
                 <button id="formatButton">Format to HTML</button>
                 <button id="copyButton">Copy HTML</button>
                 <button id="downloadButton">Download HTML File</button>
-                <button id="generateFullHTML">Generate Full Page</button>
+                <button id="generateFullHTML">Generate Markdown Source</button>
             </div>
 
             <div id="message" class="message"></div>
@@ -383,29 +383,29 @@
         <div class="tab-content" id="template-tab">
             <div class="template-info">
                 <h2>About the Template</h2>
-                <p>This tool helps you format your essays into HTML that matches your website template. The generated HTML will include:</p>
+                <p>This tool helps you format essays for the static site generator. The generated source includes:</p>
                 <ul>
                     <li>Properly formatted paragraphs</li>
                     <li>Title and subtitle</li>
                     <li>Publication date with automatic reading time</li>
                     <li>Basic formatting (italics, bold)</li>
                     <li>Footnotes support (use [^1] in text and [^1]: for footnote content)</li>
-                    <li>SEO meta tags and Open Graph tags</li>
-                    <li>Automatic dark mode support</li>
+                    <li>Frontmatter for generated SEO and Open Graph tags</li>
+                    <li>Static generator metadata</li>
                 </ul>
                 <p>You can use this tool in two ways:</p>
                 <ol>
                     <li><strong>Format Content Only:</strong> Use the "Format to HTML" button to generate just the essay content HTML.</li>
-                    <li><strong>Generate Full Page:</strong> Use the "Generate Full Page" button to create a complete HTML page based on the template.</li>
+                    <li><strong>Generate Markdown Source:</strong> Use the "Generate Markdown Source" button to create a source file for <code>src/content/essays</code>.</li>
                 </ol>
-                <p>To use the full page template:</p>
+                <p>To add a generated essay:</p>
                 <ol>
                     <li>Enter all required fields (title, subtitle, and URL slug)</li>
                     <li>Select your publication date from the date picker</li>
                     <li>Paste your essay content</li>
-                    <li>Click "Generate Full Page"</li>
-                    <li>Download the generated HTML file</li>
-                    <li>Save the file with an appropriate name (e.g., my-essay.html)</li>
+                    <li>Click "Generate Markdown Source"</li>
+                    <li>Save the output as <code>src/content/essays/my-essay.md</code></li>
+                    <li>Run <code>npm run build</code></li>
                 </ol>
             </div>
         </div>
@@ -775,54 +775,30 @@
                 return;
             }
             
-            // Fetch the template
-            fetch('template.html')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Template not found. Please make sure template.html exists in the same directory.');
-                    }
-                    return response.text();
-                })
-                .then(template => {
-                    // Replace placeholders
-                    let fullHTML = template;
-                    fullHTML = fullHTML.replace(new RegExp("<!-- ESSAY_TITLE -->", "g"), escapeHTML(title));
-                    fullHTML = fullHTML.replace(new RegExp("<!-- ESSAY_SUBTITLE -->", "g"), escapeHTML(subtitle));
-                    fullHTML = fullHTML.replace(new RegExp("<!-- ESSAY_SLUG -->", "g"), slug);
-                    fullHTML = fullHTML.replace(new RegExp("<!-- ESSAY_CONTENT -->", "g"), contentHTML);
-                    
-                    // Add meta description using excerpt
-                    const metaDescription = `<meta name="description" content="${escapeHTML(excerpt)}" />`;
-                    fullHTML = fullHTML.replace('</title>', `</title>\n    ${metaDescription}`);
-                    
-                    // Add keywords if provided
-                    if (keywords) {
-                        const metaKeywords = `<meta name="keywords" content="${escapeHTML(keywords)}" />`;
-                        fullHTML = fullHTML.replace('</title>', `</title>\n    ${metaKeywords}`);
-                    }
-                    
-                    // Display the full HTML
-                    document.getElementById('htmlOutput').textContent = fullHTML;
-                    
-                    // Also provide index.html entry
-                    const date = new Date(dateInput);
-                    const formattedDate = formatDate(date);
-                    const indexEntry = `
-                        <div class="essay-item">
-                            <div class="essay-title">
-                                <a href="${slug}.html">${escapeHTML(title)}</a>
-                            </div>
-                            <span class="essay-date">${formattedDate} · [READING TIME] min read</span>
-                            <p class="essay-excerpt">${escapeHTML(excerpt)}</p>
-                        </div>`;
-                    
-                    showMessage('Full HTML page generated successfully! Index entry copied below.', 'success');
-                    console.log('Add this to your index.html:', indexEntry);
-                })
-                .catch(error => {
-                    showMessage(error.message, 'error');
-                    console.error('Error:', error);
-                });
+            const sourceMarkdown = document.getElementById('essayContent').value.trim();
+            const tags = keywords
+                ? keywords.split(',').map(tag => tag.trim()).filter(Boolean)
+                : [];
+            const frontmatter = [
+                '---',
+                `title: ${JSON.stringify(title)}`,
+                `slug: ${JSON.stringify(slug)}`,
+                `subtitle: ${JSON.stringify(subtitle)}`,
+                `date: ${JSON.stringify(dateInput)}`,
+                `description: ${JSON.stringify(excerpt)}`,
+                `excerpt: ${JSON.stringify(excerpt)}`,
+                'published: true',
+                'homepage: false',
+                'latest: false',
+                `tags: [${tags.map(tag => JSON.stringify(tag)).join(', ')}]`,
+                `card: ${JSON.stringify(`${slug}-card.png`)}`,
+                '---',
+                '',
+                sourceMarkdown
+            ].join('\n');
+
+            document.getElementById('htmlOutput').textContent = frontmatter;
+            showMessage('Markdown source generated. Add it under src/content/essays, then run npm run build.', 'success');
         }
 
         function showMessage(text, type) {

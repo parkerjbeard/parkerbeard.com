@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.js",
+    "validate": "node validate-site.js",
+    "smoke": "node scripts/smoke.js",
+    "check": "npm run build && npm run validate && npm run smoke"
+  },
+  "devDependencies": {
+    "gray-matter": "^4.0.3",
+    "markdown-it": "^14.1.1",
+    "markdown-it-footnote": "^4.0.0"
+  }
+}

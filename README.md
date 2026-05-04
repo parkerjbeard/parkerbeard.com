@@ -1,29 +1,28 @@
 # Personal Website
 
-A personal essay website built on the foundation of [Dario Amodei's website](https://darioamodei.com/), with additional features and customizations. Emphasizes readability, minimalist design, and zero dependencies.
+A personal essay website built on a small static generator. The source lives in `src/`, and the generated root HTML/CSS/JS remains committed for simple static hosting.
 
 ## Features
 
 - Dark mode with system preference detection and persistence
-- Auto-generating table of contents with scroll tracking
 - Smart footnotes system with hover previews
-- Precomputed reading times for homepage essay links
+- Build-time reading time calculation
 - Random essay selector
 - Live age counter with precision display
 - Responsive design for all devices
 - Print-friendly styling
-- Zero dependencies - pure HTML, CSS, and vanilla JavaScript
+- Plain static output with minimal build-time dependencies
 
 ## Maintenance
 
-After editing essay content, update homepage reading times:
+After editing essay Markdown, templates, scripts, or CSS:
 
 ```sh
-node update-reading-times.js
+npm run build
 ```
 
-Before publishing, validate local links and required assets:
+Before publishing:
 
 ```sh
-node validate-site.js
+npm run check
 ```
