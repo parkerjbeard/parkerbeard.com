@@ -1,202 +1,97 @@
 <!doctype html>
-<html lang="en">
-
+<html lang="en" class="preload">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Parker Beard - Essays on Technology, Freedom, and Humanity</title>
-    
-    <!-- Primary Meta Tags -->
-    <meta name="title" content="Parker Beard - Essays on Technology, Freedom, and Humanity" />
-    <meta name="description" content="Parker Beard writes essays against the illusions of the modern world, exploring what it means to live courageously, build meaningfully, and reclaim humanity's highest purpose." />
-    <meta name="keywords" content="Parker Beard, philosophy, technology, freedom, essays, software engineering, Pepperdine University" />
-    <meta name="author" content="Parker Beard" />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://parkerbeard.com/" />
-    <meta property="og:title" content="Parker Beard - Essays on Technology, Freedom, and Humanity" />
-    <meta property="og:description" content="Parker Beard writes essays against the illusions of the modern world, exploring what it means to live courageously, build meaningfully, and reclaim humanity's highest purpose." />
-    <meta property="og:image" content="https://parkerbeard.com/images/index-card.png"/>
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://parkerbeard.com/" />
-    <meta name="twitter:title" content="Parker Beard - Essays on Technology, Freedom, and Humanity" />
-    <meta name="twitter:description" content="Parker Beard writes essays against the illusions of the modern world, exploring what it means to live courageously, build meaningfully, and reclaim humanity's highest purpose." />
-    <meta name="twitter:image" content="https://parkerbeard.com/images/index-card.png"/>
-    
-    <!-- Additional SEO Meta Tags -->
-    <meta name="robots" content="index, follow" />
-    <meta name="language" content="English" />
-    <link rel="canonical" href="https://parkerbeard.com/" />
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
-    
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Parker Beard",
-        "url": "https://parkerbeard.com",
-        "description": "Parker Beard writes essays against the illusions of the modern world, exploring what it means to live courageously, build meaningfully, and reclaim humanity's highest purpose.",
-        "alumniOf": {
-            "@type": "CollegeOrUniversity",
-            "name": "Pepperdine University"
-        },
-        "sameAs": [
-            "https://github.com/parkerjbeard"
-        ]
-    }
-    </script>
-
-    <link rel="stylesheet" href="styles.css" />
-
-    <link rel="preload" href="fonts/Newsreader.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="fonts/Newsreader-italic.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-
-    <script>
-        (function () {
-            try {
-                const root = document.documentElement;
-                
-                // Default to dark mode if not set in localStorage
-                if (localStorage.getItem("darkMode") === null) {
-                    localStorage.setItem("darkMode", "enabled");
-                }
-                
-                if (localStorage.getItem("darkMode") === "enabled") {
-                    root.classList.add("dark-mode");
-                }
-
-                queueMicrotask(() => {
-                    root.classList.add("js-loaded");
-                });
-            } catch (e) {
-                document.documentElement.classList.add("js-loaded");
-            }
-        })();
-    </script>
-
-    <script src="https://cdn.usefathom.com/script.js" data-site="VDZFYXIJ" defer></script>
-    <script src="darkmode.js" defer></script>
-    <script src="homepage.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parker Beard - Essays on Technology, Freedom, and Humanity</title>
+  <meta name="title" content="Parker Beard - Essays on Technology, Freedom, and Humanity" />
+  <meta name="description" content="Parker Beard writes essays against the illusions of the modern world, exploring what it means to live courageously, build meaningfully, and reclaim humanity's highest purpose." />
+  <meta name="author" content="Parker Beard" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://parkerbeard.com/" />
+  <meta property="og:title" content="Parker Beard - Essays on Technology, Freedom, and Humanity" />
+  <meta property="og:description" content="Parker Beard writes essays against the illusions of the modern world, exploring what it means to live courageously, build meaningfully, and reclaim humanity's highest purpose." />
+  <meta property="og:image" content="https://parkerbeard.com/images/index-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://parkerbeard.com/" />
+  <meta name="twitter:title" content="Parker Beard - Essays on Technology, Freedom, and Humanity" />
+  <meta name="twitter:description" content="Parker Beard writes essays against the illusions of the modern world, exploring what it means to live courageously, build meaningfully, and reclaim humanity's highest purpose." />
+  <meta name="twitter:image" content="https://parkerbeard.com/images/index-card.png" />
+  <meta name="robots" content="index, follow" />
+  <meta name="language" content="English" />
+  <link rel="canonical" href="https://parkerbeard.com/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+  <link rel="stylesheet" href="styles.css?v=20260504" />
+  <link rel="preload" href="fonts/Newsreader.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/Newsreader-italic.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <script>
+    (function () {
+      try {
+        var root = document.documentElement;
+        if (localStorage.getItem("darkMode") === null) {
+          localStorage.setItem("darkMode", "enabled");
+        }
+        if (localStorage.getItem("darkMode") === "enabled") {
+          root.classList.add("dark-mode");
+        }
+        root.classList.add("js-loaded");
+      } catch (e) {
+        document.documentElement.classList.add("js-loaded");
+      }
+    })();
+  </script>
 </head>
+<body class="site-page home-page">
+<header class="site-header">
+  <div class="site-header__inner">
+    <p class="site-title"><a class="site-title__link" href="./">Parker Beard</a></p>
+    <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+      <span class="theme-toggle__track" aria-hidden="true">
+        <span class="theme-toggle__thumb"></span>
+      </span>
+    </button>
+  </div>
+</header>
+<main class="home-main">
+  <div class="home-layout">
+    <section class="home-section home-essays" aria-labelledby="essays-heading">
+      <div class="section-heading">
+        <h2 id="essays-heading" class="section-heading__title">Essays</h2>
+        <button id="randomEssayBtn" class="random-essay-button" type="button" title="Random Essay" aria-label="Open a random essay">⚄</button>
+      </div>
+      <div class="essay-list">
+<article class="essay-list__item">
+        <h3 class="essay-list__title"><a href="patriotic-for-what.html">Patriotic for What?</a> <span class="essay-list__latest">Latest</span></h3>
+        <p class="essay-list__meta">4 July 2025 · 9 min read</p>
+        <p class="essay-list__excerpt">A reflection on the American spirit.</p>
+      </article>
+<article class="essay-list__item">
+        <h3 class="essay-list__title"><a href="beyond-frontiers.html">Beyond Frontiers</a></h3>
+        <p class="essay-list__meta">9 November 2024 · 4 min read</p>
+        <p class="essay-list__excerpt">From Alaskan glaciers to code—my quest for creation as divine reverence.</p>
+      </article>
+      </div>
+    </section>
+    <aside class="home-sidebar" aria-label="About Parker Beard">
+      <section class="home-section">
+        <h2 class="sidebar-heading">About</h2>
+        <p>Parker Beard writes essays against the illusions of the modern world, exploring what it means to live courageously, build meaningfully, and resurrect the untamed spirit of American greatness.</p>
+        <p>He is currently working at Rainmaker as a Forward Deployed Engineer. All opinions are his own.</p>
+        <p id="age-counter" class="age-counter"></p>
+      </section>
+      <section class="home-section">
+        <h2 class="sidebar-heading">Links</h2>
+        <ul class="link-list">
+          <li><a href="https://github.com/parkerjbeard" target="_blank" rel="noopener noreferrer">Github</a></li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+</main>
 
-<body class="homepage">
-    <div class="container">
-        <header>
-            <h1>
-                <a href="./">Parker Beard</a>
-            </h1>
-            <div class="toggle-switch">
-                <input type="checkbox" id="darkModeToggle" class="toggle-input" />
-                <label for="darkModeToggle" class="toggle-label">
-                    <span class="toggle-slider"></span>
-                </label>
-            </div>
-        </header>
-
-        <main>
-            <div class="layout">
-                <section class="essays-section">
-                    <div class="essays-header">
-                        <h2>Essays</h2>
-                        <button id="randomEssayBtn" class="random-essay-btn" title="Random Essay">⚄</button>
-                    </div>
-                    <div class="essays-list">
-                        <div class="essay-item">
-                            <div class="essay-title">
-                                <a href="patriotic-for-what.html">Patriotic for What?</a>
-                                <span class="latest-tag">Latest</span>
-                            </div>
-                            <span class="essay-date">4 July 2025 · 9 min read</span>
-                            <p class="essay-excerpt">A reflection on the American spirit.</p>
-                        </div>
-                        
-                        <!-- <div class="essay-item">
-                            <div class="essay-title">
-                                <a href="the-death-of-beauty.html">The Death of Beauty</a>
-                            </div>
-                            <span class="essay-date">18 April 2025 · 7 min read</span>
-                            <p class="essay-excerpt">A civilization's surrender to sanctioned decay.</p>
-                        </div> -->
-                        
-                        <!-- <div class="essay-item">
-                            <div class="essay-title">
-                                <a href="the-last-warden.html">The Last Warden</a>
-                            </div>
-                            <span class="essay-date">7 April 2025 · 11 min read</span>
-                            <p class="essay-excerpt">When the forest falls and towers rise, the roots remain.</p>
-                        </div> -->
-                        
-                        <!-- <div class="essay-item">
-                            <div class="essay-title">
-                                <a href="before-the-cage.html">Before the Cage</a>
-                            </div>
-                            <span class="essay-date">1 April 2025 · 7 min read</span>
-                            <p class="essay-excerpt">Reclaiming the wild spirit from a world of comfortable submission.</p>
-                        </div> -->
-                        
-                        <!-- <div class="essay-item">
-                            <div class="essay-title">
-                                <a href="the-nightmares-i-carry.html">The Nightmares I Carry</a>
-                            </div>
-                            <span class="essay-date">24 February 2025 · 3 min read</span>
-                            <p class="essay-excerpt">Nightly reminders that inaction costs everything.</p>
-                        </div> -->
-                        
-                        <!-- <div class="essay-item">
-                            <div class="essay-title">
-                                <a href="the-censorship-paradox.html">The Censorship Paradox</a>
-                            </div>
-                            <span class="essay-date">17 February 2025 · 6 min read</span>
-                            <p class="essay-excerpt">Truth silenced only grows stronger underground.</p>
-                        </div> -->
-                        
-                        <!-- <div class="essay-item">
-                            <div class="essay-title">
-                                <a href="against-the-university.html">Against the University</a>
-                            </div>
-                            <span class="essay-date">3 February 2025 · 9 min read</span>
-                            <p class="essay-excerpt">Modern academia's fatal exchange: excellence for credentials.</p>
-                        </div> -->
-                        
-                        <div class="essay-item">
-                            <div class="essay-title">
-                                <a href="beyond-frontiers.html">Beyond Frontiers</a>
-                            </div>
-                            <span class="essay-date">9 November 2024 · 5 min read</span>
-                            <p class="essay-excerpt">From Alaskan glaciers to code—my quest for creation as divine reverence.</p>
-                        </div>
-                    </div>
-                </section>
-
-                <div class="sidebar">
-                    <section class="about-section">
-                        <h3>About</h3>
-                        <p>
-                            Parker Beard writes essays against the illusions of the modern world, exploring what it means to live courageously, build meaningfully, and resurrect the untamed spirit of American greatness.
-                        </p>
-                        <p>He is currently working at Rainmaker as a Forward Deployed Engineer. All opinions are his own.</p>
-                        <p id="age-counter" class="age-counter"></p>
-                    </section>
-
-                    <section class="links-section">
-                        <h3>Links</h3>
-                        <ul>
-                            <li>
-                                <a href="https://github.com/parkerjbeard" target="_blank" rel="noopener noreferrer">Github</a>
-                            </li>
-                        </ul>
-                    </section>
-                </div>
-            </div>
-        </main>
-    </div>
-
+  <script src="theme.js" defer></script>
+  <script src="homepage.js" defer></script>
 </body>
-
 </html>
