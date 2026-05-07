@@ -70,7 +70,7 @@ function head({ title, description, url, image, type = "website" }) {
   <meta name="language" content="English" />
   <link rel="canonical" href="${fullUrl}" />
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
-  <link rel="stylesheet" href="styles.css?v=20260504" />
+  <link rel="stylesheet" href="styles.css?v=20260507-2" />
   <link rel="preload" href="fonts/Newsreader.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="fonts/Newsreader-italic.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />

@@ -219,6 +219,10 @@ body {
   font-size: 1.1rem;
 }
 
+.home-sidebar .home-section:first-child .sidebar-heading {
+  font-size: 1.5rem;
+}
+
 .essay-list__item {
   margin-bottom: 2rem;
 }
@@ -297,13 +301,16 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 4px 8px;
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0;
   border: 1px solid transparent;
   border-radius: 4px;
   background: transparent;
   color: var(--text-color);
   font: inherit;
-  font-size: 1.2rem;
+  font-size: 0.85rem;
+  line-height: 1;
   cursor: pointer;
   opacity: 0.6;
   transition:
