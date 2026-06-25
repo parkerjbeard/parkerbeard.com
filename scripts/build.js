@@ -124,8 +124,6 @@ function build() {
   write("sitemap.xml", buildSitemap(essays));
 
   copyAsset("src/styles.css", "styles.css");
-  copyAsset("src/scripts/theme.js", "theme.js");
-  copyAsset("src/scripts/homepage.js", "homepage.js");
   copyAsset("src/scripts/footnotes.js", "footnotes.js");
 
   console.log(`Built ${essays.length} essays and homepage.`);
