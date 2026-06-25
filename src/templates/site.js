@@ -3,9 +3,8 @@
 const SITE = {
   name: "Parker Beard",
   url: "https://parkerjbeard.com",
-  title: "Parker Beard - Essays on Technology, Freedom, and Humanity",
-  description:
-    "Parker Beard writes essays against the illusions of the modern world, exploring what it means to live courageously, build meaningfully, and reclaim humanity's highest purpose.",
+  title: "Parker Beard",
+  description: "Personal site of Parker Beard.",
 };
 
 function escapeHtml(value) {
