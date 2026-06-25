@@ -34,8 +34,8 @@ async function main() {
     const cases = [
       ["home-desktop", "/", "900,500"],
       ["home-mobile", "/", "390,780"],
-      ["visible-essay", "/patriotic-for-what.html", "900,700"],
-      ["hidden-essay", "/against-the-university.html", "900,700"],
+      ["essay-latest", "/patriotic-for-what.html", "900,700"],
+      ["essay-other", "/beyond-frontiers.html", "900,700"],
     ];
 
     for (const [name, route, size] of cases) {
