@@ -2,7 +2,7 @@
 
 const SITE = {
   name: "Parker Beard",
-  url: "https://parkerbeard.com",
+  url: "https://parkerjbeard.com",
   title: "Parker Beard - Essays on Technology, Freedom, and Humanity",
   description:
     "Parker Beard writes essays against the illusions of the modern world, exploring what it means to live courageously, build meaningfully, and reclaim humanity's highest purpose.",
@@ -22,25 +22,6 @@ function formatDate(date) {
     month: "long",
     timeZone: "UTC",
   })} ${parsed.getUTCFullYear()}`;
-}
-
-function themeInitScript() {
-  return `<script>
-    (function () {
-      try {
-        var root = document.documentElement;
-        if (localStorage.getItem("darkMode") === null) {
-          localStorage.setItem("darkMode", "enabled");
-        }
-        if (localStorage.getItem("darkMode") === "enabled") {
-          root.classList.add("dark-mode");
-        }
-        root.classList.add("js-loaded");
-      } catch (e) {
-        document.documentElement.classList.add("js-loaded");
-      }
-    })();
-  </script>`;
 }
 
 function head({ title, description, url, image, type = "website" }) {
@@ -70,12 +51,11 @@ function head({ title, description, url, image, type = "website" }) {
   <meta name="language" content="English" />
   <link rel="canonical" href="${fullUrl}" />
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
-  <link rel="stylesheet" href="styles.css?v=20260507-2" />
+  <link rel="stylesheet" href="styles.css?v=20260624-4" />
   <link rel="preload" href="fonts/Newsreader.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="fonts/Newsreader-italic.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-  ${themeInitScript()}
 </head>`;
 }
 
@@ -83,11 +63,6 @@ function header() {
   return `<header class="site-header">
   <div class="site-header__inner">
     <p class="site-title"><a class="site-title__link" href="./">Parker Beard</a></p>
-    <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
-      <span class="theme-toggle__track" aria-hidden="true">
-        <span class="theme-toggle__thumb"></span>
-      </span>
-    </button>
   </div>
 </header>`;
 }
@@ -98,11 +73,10 @@ function document({ bodyClass, title, description, url, image, scripts = [], bod
     .join("\n");
 
   return `<!doctype html>
-<html lang="en" class="preload">
+<html lang="en">
 ${head({ title, description, url, image })}
 <body class="site-page ${bodyClass}">
 ${body}
-  <script src="theme.js" defer></script>
 ${scriptTags ? `${scriptTags}\n` : ""}</body>
 </html>
 `;
@@ -115,54 +89,59 @@ function homepage({ essays }) {
 
   const essayItems = visibleEssays
     .map((essay) => {
-      const latest = essay.latest ? ` <span class="essay-list__latest">Latest</span>` : "";
-      return `<article class="essay-list__item">
-        <h3 class="essay-list__title"><a href="${escapeHtml(essay.slug)}.html">${escapeHtml(essay.title)}</a>${latest}</h3>
-        <p class="essay-list__meta">${formatDate(essay.date)} · ${essay.readingTime} min read</p>
-        <p class="essay-list__excerpt">${escapeHtml(essay.excerpt)}</p>
-      </article>`;
+      const meta = essay.latest
+        ? `${formatDate(essay.date)} &nbsp;·&nbsp; Latest`
+        : formatDate(essay.date);
+      return `        <article class="essay">
+          <h2 class="essay__title"><a href="${escapeHtml(essay.slug)}.html">${escapeHtml(essay.title)}</a></h2>
+          <p class="essay__meta">${meta}</p>
+        </article>`;
     })
     .join("\n");
 
-  const body = `${header()}
-<main class="home-main">
-  <div class="home-layout">
-    <section class="home-section home-essays" aria-labelledby="essays-heading">
-      <div class="section-heading">
-        <h2 id="essays-heading" class="section-heading__title">Essays</h2>
-        <button id="randomEssayBtn" class="random-essay-button" type="button" title="Random Essay" aria-label="Open a random essay">⚄</button>
+  // The homepage is a single, static, full-bleed photo hero — deliberately unlike
+  // every other page. It carries its own <html>/<head>/<body> (no preload class, no
+  // theme.js, no homepage.js) so the cold light hero never inherits the dark-mode
+  // system used by the essay pages.
+  const body = `  <div class="stage">
+    <img class="stage__photo" src="images/pika-glacier-2021.jpg" alt="Three skiers breaking trail across an Alaskan glacier toward distant peaks" fetchpriority="high" />
+    <div class="stage__scrim-top"></div>
+    <div class="stage__scrim-bottom"></div>
+
+    <div class="stage__inner">
+      <div class="top">
+        <div class="masthead">
+          <h1 class="name">Parker<br>Beard</h1>
+        </div>
       </div>
-      <div class="essay-list">
+
+      <div class="about">
+        <p>Forward Deployed Engineer at Rainmaker.<span class="about-extra"> I enjoy solo mountaineering, military history, German philosophy, and writing essays on civilization and technology. All opinions are my own.</span></p>
+        <p><a href="https://github.com/parkerjbeard" target="_blank" rel="noopener noreferrer">Github</a></p>
+      </div>
+
+      <p class="photo-caption">Pika Glacier, 2021</p>
+
+      <div class="essays">
+        <p class="field-label">Essays</p>
 ${essayItems}
       </div>
-    </section>
-    <aside class="home-sidebar" aria-label="About Parker Beard">
-      <section class="home-section">
-        <h2 class="sidebar-heading">About</h2>
-        <p>Parker Beard writes essays against the illusions of the modern world, exploring what it means to live courageously, build meaningfully, and resurrect the untamed spirit of American greatness.</p>
-        <p>He is currently working at Rainmaker as a Forward Deployed Engineer. All opinions are his own.</p>
-        <p id="age-counter" class="age-counter"></p>
-      </section>
-      <section class="home-section">
-        <h2 class="sidebar-heading">Links</h2>
-        <ul class="link-list">
-          <li><a href="https://github.com/parkerjbeard" target="_blank" rel="noopener noreferrer">Github</a></li>
-        </ul>
-      </section>
-    </aside>
+    </div>
   </div>
-</main>
 `;
 
-  return document({
-    bodyClass: "home-page",
+  return `<!doctype html>
+<html lang="en">
+${head({
     title: SITE.title,
     description: SITE.description,
     url: `${SITE.url}/`,
-    image: `${SITE.url}/images/index-card.png`,
-    scripts: ["homepage.js"],
-    body,
-  });
+    image: `${SITE.url}/images/pika-glacier-card.jpg`,
+  })}
+<body class="site-page home-page">
+${body}</body>
+</html>
+`;
 }
 
 function essayPage({ essay }) {
