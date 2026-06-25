@@ -4,11 +4,9 @@ slug: "patriotic-for-what"
 subtitle: "On the American Spirit"
 date: "2025-07-04"
 description: "A reflection on the American spirit"
-excerpt: "A reflection on the American spirit."
 published: true
 homepage: true
 latest: true
-tags: ["america", "spirit"]
 card: "patriotic-for-what-card.png"
 ---
 I was raised to love God, my family, and my country—and to understand sacrifice. My great-great-great-great-great-great-grandfather crossed the Atlantic by boat to receive a bayonet scar from fighting the Redcoats. For his service, he received a plot of land in Tennessee, where my family planted their roots and pushed westward across the American frontier. One of the sons of my great-great-grandfather returned to European soil for WWII, dying as a boy under the French skies in a shallow grave. The men in my patriarchal line didn’t live, fight, and die for an abstraction of universal ideals, but rather for their families, for their kin, for their God-given right to dominion. To tell them that America is an “idea” would be absurd. They clearly understood what has been forgotten: nations belong to those who bleed for them, that civilization is built by those who plant trees knowing they’ll never see its shade, that every abstract “freedom” was purchased at a price we can barely comprehend. America is not an idea, but rather a conquest—passed down as a birthright, meant to be held tightly in hand and close to the heart.

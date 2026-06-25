@@ -4,13 +4,9 @@ A personal essay website built on a small static generator. The source lives in 
 
 ## Features
 
-- Dark mode with system preference detection and persistence
-- Smart footnotes system with hover previews
+- Footnotes with hover previews
 - Build-time reading time calculation
-- Random essay selector
-- Live age counter with precision display
 - Responsive design for all devices
-- Print-friendly styling
 - Plain static output with minimal build-time dependencies
 
 ## Maintenance

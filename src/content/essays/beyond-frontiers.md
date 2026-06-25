@@ -4,11 +4,9 @@ slug: "beyond-frontiers"
 subtitle: "On exploration, innovation, and purpose"
 date: "2024-11-09"
 description: "On exploration, innovation, and purpose"
-excerpt: "From Alaskan glaciers to code—my quest for creation as divine reverence."
 published: true
 homepage: true
 latest: false
-tags: ["frontiers", "creation"]
 card: "beyond-frontiers-card.png"
 ---
 I grew up idolizing history's great explorers and inventors. I knew everything a kid could know about Leonardo da Vinci and once dressed up as Neil Armstrong for a school project on historical role models. When people asked me what I wanted to be, I would say, “An inventor!” I also distinctly remember hearing the well-worn phrase, “Born too late to explore the world, and too early to explore the stars.” As a young teen, that left a pit in my stomach. I wanted to sail towards uncharted lands or launch into space and make distant galaxies less distant. Equally, the drive to create was driven by a contrarian spirit and restless energy – I wanted to build things that challenged what we believed possible.

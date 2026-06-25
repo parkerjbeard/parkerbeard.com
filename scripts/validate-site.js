@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
 
-const ROOT = __dirname;
+const ROOT = path.resolve(__dirname, "..");
 const ESSAY_DIR = path.join(ROOT, "src/content/essays");
 const errors = [];
 
@@ -52,11 +52,9 @@ for (const file of essayFiles) {
     "subtitle",
     "date",
     "description",
-    "excerpt",
     "published",
     "homepage",
     "latest",
-    "tags",
     "card",
   ]) {
     check(Object.prototype.hasOwnProperty.call(data, field), `${file}: missing ${field}`);
@@ -65,7 +63,6 @@ for (const file of essayFiles) {
   check(!slugs.has(data.slug), `${file}: duplicate slug ${data.slug}`);
   slugs.add(data.slug);
   check(/^\d{4}-\d{2}-\d{2}$/.test(data.date || ""), `${file}: invalid date`);
-  check(Array.isArray(data.tags), `${file}: tags must be an array`);
   check(existsSitePath(`images/${data.card}`), `${file}: missing card image ${data.card}`);
   check(parsed.content.trim().length > 0, `${file}: missing body content`);
 }
@@ -122,7 +119,6 @@ const css = read("styles.css");
 const bannedSelectorPatterns = [
   /(^|})\s*header\b/,
   /(^|})\s*h[1-6]\b/,
-  /\.toggle-/,
 ];
 for (const pattern of bannedSelectorPatterns) {
   check(!pattern.test(css), `styles.css: banned unscoped selector ${pattern}`);

@@ -110,10 +110,6 @@ ${urls
 </urlset>`;
 }
 
-function copyAsset(source, target) {
-  fs.copyFileSync(path.join(ROOT, source), path.join(ROOT, target));
-}
-
 function build() {
   const essays = loadEssays();
 
@@ -122,9 +118,6 @@ function build() {
     write(`${essay.slug}.html`, essayPage({ essay }));
   }
   write("sitemap.xml", buildSitemap(essays));
-
-  copyAsset("src/styles.css", "styles.css");
-  copyAsset("src/scripts/footnotes.js", "footnotes.js");
 
   console.log(`Built ${essays.length} essays and homepage.`);
 }
