@@ -14,7 +14,7 @@ function check(condition, message) {
 
 function existsSitePath(value) {
   const clean = value
-    .replace(/^https:\/\/parkerbeard\.com\//, "")
+    .replace(/^https:\/\/parkerjbeard\.com\//, "")
     .replace(/^\//, "")
     .split("#")[0]
     .split("?")[0];
@@ -96,15 +96,15 @@ for (const file of htmlFiles) {
 
   if (file === "index.html") {
     check(html.includes('class="site-page home-page"'), `${file}: missing home page classes`);
-    check(html.includes('class="home-layout"'), `${file}: missing home layout`);
+    check(html.includes('class="stage"'), `${file}: missing hero stage`);
   } else if (slugs.has(file.replace(/\.html$/, ""))) {
     check(html.includes('class="site-page essay-page"'), `${file}: missing essay page classes`);
     check(html.includes('class="prose"'), `${file}: missing prose class`);
   }
 
-  if (file === "index.html" || slugs.has(file.replace(/\.html$/, ""))) {
+  // The photo-hero homepage has no site header; only essays carry one.
+  if (slugs.has(file.replace(/\.html$/, ""))) {
     check(html.includes('class="site-header"'), `${file}: missing site header`);
-    check(html.includes('class="theme-toggle"'), `${file}: missing theme toggle`);
   }
 }
 
@@ -114,7 +114,6 @@ for (const file of [
   "favicon.ico",
   "apple-touch-icon.png",
   "styles.css",
-  "theme.js",
 ]) {
   check(fs.existsSync(path.join(ROOT, file)), `missing ${file}`);
 }
