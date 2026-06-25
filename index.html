@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="preload">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,90 +8,57 @@
   <meta name="description" content="Parker Beard writes essays against the illusions of the modern world, exploring what it means to live courageously, build meaningfully, and reclaim humanity's highest purpose." />
   <meta name="author" content="Parker Beard" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://parkerbeard.com/" />
+  <meta property="og:url" content="https://parkerjbeard.com/" />
   <meta property="og:title" content="Parker Beard - Essays on Technology, Freedom, and Humanity" />
   <meta property="og:description" content="Parker Beard writes essays against the illusions of the modern world, exploring what it means to live courageously, build meaningfully, and reclaim humanity's highest purpose." />
-  <meta property="og:image" content="https://parkerbeard.com/images/index-card.png" />
+  <meta property="og:image" content="https://parkerjbeard.com/images/pika-glacier-card.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://parkerbeard.com/" />
+  <meta name="twitter:url" content="https://parkerjbeard.com/" />
   <meta name="twitter:title" content="Parker Beard - Essays on Technology, Freedom, and Humanity" />
   <meta name="twitter:description" content="Parker Beard writes essays against the illusions of the modern world, exploring what it means to live courageously, build meaningfully, and reclaim humanity's highest purpose." />
-  <meta name="twitter:image" content="https://parkerbeard.com/images/index-card.png" />
+  <meta name="twitter:image" content="https://parkerjbeard.com/images/pika-glacier-card.jpg" />
   <meta name="robots" content="index, follow" />
   <meta name="language" content="English" />
-  <link rel="canonical" href="https://parkerbeard.com/" />
+  <link rel="canonical" href="https://parkerjbeard.com/" />
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
-  <link rel="stylesheet" href="styles.css?v=20260507-2" />
+  <link rel="stylesheet" href="styles.css?v=20260624-4" />
   <link rel="preload" href="fonts/Newsreader.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="fonts/Newsreader-italic.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-  <script>
-    (function () {
-      try {
-        var root = document.documentElement;
-        if (localStorage.getItem("darkMode") === null) {
-          localStorage.setItem("darkMode", "enabled");
-        }
-        if (localStorage.getItem("darkMode") === "enabled") {
-          root.classList.add("dark-mode");
-        }
-        root.classList.add("js-loaded");
-      } catch (e) {
-        document.documentElement.classList.add("js-loaded");
-      }
-    })();
-  </script>
 </head>
 <body class="site-page home-page">
-<header class="site-header">
-  <div class="site-header__inner">
-    <p class="site-title"><a class="site-title__link" href="./">Parker Beard</a></p>
-    <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
-      <span class="theme-toggle__track" aria-hidden="true">
-        <span class="theme-toggle__thumb"></span>
-      </span>
-    </button>
-  </div>
-</header>
-<main class="home-main">
-  <div class="home-layout">
-    <section class="home-section home-essays" aria-labelledby="essays-heading">
-      <div class="section-heading">
-        <h2 id="essays-heading" class="section-heading__title">Essays</h2>
-        <button id="randomEssayBtn" class="random-essay-button" type="button" title="Random Essay" aria-label="Open a random essay">⚄</button>
-      </div>
-      <div class="essay-list">
-<article class="essay-list__item">
-        <h3 class="essay-list__title"><a href="patriotic-for-what.html">Patriotic for What?</a> <span class="essay-list__latest">Latest</span></h3>
-        <p class="essay-list__meta">4 July 2025 · 9 min read</p>
-        <p class="essay-list__excerpt">A reflection on the American spirit.</p>
-      </article>
-<article class="essay-list__item">
-        <h3 class="essay-list__title"><a href="beyond-frontiers.html">Beyond Frontiers</a></h3>
-        <p class="essay-list__meta">9 November 2024 · 4 min read</p>
-        <p class="essay-list__excerpt">From Alaskan glaciers to code—my quest for creation as divine reverence.</p>
-      </article>
-      </div>
-    </section>
-    <aside class="home-sidebar" aria-label="About Parker Beard">
-      <section class="home-section">
-        <h2 class="sidebar-heading">About</h2>
-        <p>Parker Beard writes essays against the illusions of the modern world, exploring what it means to live courageously, build meaningfully, and resurrect the untamed spirit of American greatness.</p>
-        <p>He is currently working at Rainmaker as a Forward Deployed Engineer. All opinions are his own.</p>
-        <p id="age-counter" class="age-counter"></p>
-      </section>
-      <section class="home-section">
-        <h2 class="sidebar-heading">Links</h2>
-        <ul class="link-list">
-          <li><a href="https://github.com/parkerjbeard" target="_blank" rel="noopener noreferrer">Github</a></li>
-        </ul>
-      </section>
-    </aside>
-  </div>
-</main>
+  <div class="stage">
+    <img class="stage__photo" src="images/pika-glacier-2021.jpg" alt="Three skiers breaking trail across an Alaskan glacier toward distant peaks" fetchpriority="high" />
+    <div class="stage__scrim-top"></div>
+    <div class="stage__scrim-bottom"></div>
 
-  <script src="theme.js" defer></script>
-  <script src="homepage.js" defer></script>
+    <div class="stage__inner">
+      <div class="top">
+        <div class="masthead">
+          <h1 class="name">Parker<br>Beard</h1>
+        </div>
+      </div>
+
+      <div class="about">
+        <p>Forward Deployed Engineer at Rainmaker.<span class="about-extra"> I enjoy solo mountaineering, military history, German philosophy, and writing essays on civilization and technology. All opinions are my own.</span></p>
+        <p><a href="https://github.com/parkerjbeard" target="_blank" rel="noopener noreferrer">Github</a></p>
+      </div>
+
+      <p class="photo-caption">Pika Glacier, 2021</p>
+
+      <div class="essays">
+        <p class="field-label">Essays</p>
+        <article class="essay">
+          <h2 class="essay__title"><a href="patriotic-for-what.html">Patriotic for What?</a></h2>
+          <p class="essay__meta">4 July 2025 &nbsp;·&nbsp; Latest</p>
+        </article>
+        <article class="essay">
+          <h2 class="essay__title"><a href="beyond-frontiers.html">Beyond Frontiers</a></h2>
+          <p class="essay__meta">9 November 2024</p>
+        </article>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
